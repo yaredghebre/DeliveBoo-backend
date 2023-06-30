@@ -1,9 +1,18 @@
 @extends('layouts.app')
-'image',
-'description'
+
 @section('content')
+
+
+
     <div class="containter vh-100">
         <div class="row h-100 justify-content-center align-items-center">
+            @if ($errors->any())
+                <ul class="allert">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
             <div class="col-6">
                 <form action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
