@@ -17,17 +17,19 @@ class Restaurant extends Model
         'description',
         'user_id'
     ];
+
     // 1 to 1 -> user
-    public function user(){
+    public function user() {
         return $this->belongsTo(User::class);
     }
-    //n to n -> types
-    public function types(){
+
+    // N to N -> types
+    public function types() {
         return $this->belongsToMany(Type::class);
     }
 
-    //1 to n -> products
-    public function products(){
+    //1 to N -> products
+    public function products() {
         return $this->hasMany(Product::class);
     }
 
