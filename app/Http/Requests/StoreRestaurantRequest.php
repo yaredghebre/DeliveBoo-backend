@@ -48,6 +48,10 @@ class StoreRestaurantRequest extends FormRequest
                 'min:6',
                 'max:1000'
             ],
+            'user_id' => [
+                'nullable',
+                'exists:users,id'
+            ]
         ];
     }
 

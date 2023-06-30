@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRestaurantRequest;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -16,6 +19,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+        
         return view('admin.restaurants.create');
     }
 
@@ -27,7 +31,12 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        dd($request->validate());
+        $data = $request->validated();
+        $data['user_id'] = Auth::user()->id;
+        $path = Storage::disk('public')->put('img', $request->image);
+        $data['image']= $path;
+        Restaurant::create($data);
+        return redirect()->route('admin.dashboard');
     }
 
     /**
