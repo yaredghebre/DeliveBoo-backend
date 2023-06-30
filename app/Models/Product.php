@@ -12,4 +12,8 @@ class Product extends Model
     public function restaurant(){
         return $this->belongsTo(Restaurant::class);
     }
+
+    public function categories() {
+        return $this->hasMany(Category::class);
+    }
 }
