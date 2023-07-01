@@ -19,6 +19,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+
         return view('admin.restaurants.create');
     }
 
@@ -33,7 +34,7 @@ class RestaurantController extends Controller
         $data = $request->validated();
         $data['user_id'] = Auth::user()->id;
         $path = Storage::disk('public')->put('img', $request->image);
-        $data['image']= $path;
+        $data['image'] = $path;
         Restaurant::create($data);
         return redirect()->route('admin.dashboard');
     }

@@ -25,7 +25,8 @@
                             @else
                                 <p>Descrizione non disponibile</p>
                             @endif
-                            <a href="#" class="btn btn-primary">Visualizza prodotti</a>
+                            <a href="{{ route('admin.products.index') }}" class="btn btn-primary">Visualizza
+                                prodotti</a>
                         </div>
                     </div>
                 @endforeach
