@@ -20,10 +20,8 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-
-        $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
-
-        if (Auth::user()->id == $restaurant->user_id) {
+        if (Auth::user()->restaurant) {
+            $restaurant = Auth::user()->restaurant;
             return redirect()->route('admin.dashboard')->with('message', "Possiedi già un ristorante");
         } else {
             return view('admin.restaurants.create');
