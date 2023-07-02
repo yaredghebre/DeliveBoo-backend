@@ -16,16 +16,18 @@ class RestaurantsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     { 
-        $restaurants=['da Gino','Mamma mia','la Luna','Roma Roma'];
-        foreach($restaurants as $restaurant){
+        $italian_restaurants=['da Gino','Mamma mia','la Luna','Roma Roma','pizza italia','magica','trattoria','pizzeria ristorante','sora lella','pizza napoli','sushi shiso','sushi brasiliano','sushi roma','sushi sushi','bistecche wow','brace viva','la griglieria'];
+        $number=12345678912;
+        foreach($italian_restaurants as $restaurant){
             $new_restaurant=new Restaurant();
-            $new_restaurant->user_id=$faker->randomNumber(count($restaurants));
-            $new_restaurant->name='da Gino';
+            $new_restaurant->name=$restaurant;
             $new_restaurant->address='via roma';
-            $new_restaurant->vat_number=$faker->vat();
+            $new_restaurant->image='https://th.bing.com/th/id/OIP.tKUOt_OKQoDbSrb39CFbTwHaHa?pid=ImgDet&rs=1';
+            $new_restaurant->vat_number=$number++;
             $new_restaurant->save();
 
         }
+        
         
     }
 }
