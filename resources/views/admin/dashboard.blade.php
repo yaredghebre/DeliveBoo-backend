@@ -25,8 +25,13 @@
                         @else
                             <p>Descrizione non disponibile</p>
                         @endif
+                        @if (($restaurant->products)->isEmpty())
+                            <a href="{{route('admin.products.create')}}">aggiungi nuovi prodotti</a>
+                        @else
                         <a href="{{ route('admin.products.index') }}" class="btn btn-primary">Visualizza
                             prodotti</a>
+                        @endif
+                        
                     </div>
                 </div>
             @endif
