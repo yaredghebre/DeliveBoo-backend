@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\Restaurant;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -15,7 +20,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+        $products = Auth::user()->restaurant->products;
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -25,7 +31,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.products.create', compact('categories'));
     }
 
     /**
@@ -36,7 +43,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['visible'] = true;
+        $data['restaurant_id'] = Auth::user()->restaurant->id;
+        if ($request->hasFile('image')) {
+            $path = Storage::disk('public')->put('product_images', $request->image);
+            $data['image'] = $path;
+        }
+        $product = Product::create($data);
+
+        if ($request->has('categories')) {
+            $product->categories()->attach($request->categories);
+        }
+
+        return redirect()->route('admin.products.index');
     }
 
     /**
