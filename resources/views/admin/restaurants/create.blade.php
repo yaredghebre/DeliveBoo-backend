@@ -63,7 +63,22 @@
                         </div>
 
                     </div>
-                    <button type="submit" class="btn btn-success ms-auto">Salva</button>
+
+                    <p>seleziona le categorie che più si addicono al tuo ristorante</p>
+                    <div class="mb-3 types-checkbox form-tags-container row ">
+                        
+                        @foreach ($types as $type)
+                        <div class="form-check form-ceck-tag">
+                            <label class="form-check-label absolute" for="type-{{$type->id}}">
+                                {{$type->name}}
+                            </label>
+                            <input class="form-check-input ms_form-check" type="checkbox" value="{{$type->id}}" id="type-{{$type->id}}" name="Types[]">
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Salva</button>
+                    </div>
 
                 </form>
             </div>
