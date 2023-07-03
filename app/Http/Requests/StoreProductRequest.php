@@ -42,9 +42,7 @@ class StoreProductRequest extends FormRequest
                 'min:6',
                 'max:1000'
             ],
-            'visible' => [
-                'required',
-            ]
+           
         ];
     }
 
