@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Models\Restaurant;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -20,11 +21,12 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+        $types = Type::all();
         if (Auth::user()->restaurant) {
             $restaurant = Auth::user()->restaurant;
             return redirect()->route('admin.dashboard')->with('message', "Possiedi già un ristorante");
         } else {
-            return view('admin.restaurants.create');
+            return view('admin.restaurants.create',compact('types'));
         }
     }
 
