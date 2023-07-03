@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- @dd($products) --}}
+    @include('partials.session-message');
+
 
     <div class="container-fluid w-75 mt-5">
         <h1 class="my-3">I prodotti di {{ Auth::user()->restaurant->name }}</h1>
@@ -28,7 +29,11 @@
                                 <button type="submit" class="btn btn-secondary"><i class="fa-solid fa-eye-slash" style="color: #ffffff;"></i></button>    
                             @endif
                         </form>
-                        <form action=""></form>
+                        <form action="{{route('admin.products.destroy', $item->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
+                        </form>
                     </div>
                 </div>
             @endforeach
