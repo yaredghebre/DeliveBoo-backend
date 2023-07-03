@@ -51,7 +51,12 @@ class StoreRestaurantRequest extends FormRequest
             'user_id' => [
                 'nullable',
                 'exists:users,id'
+            ],
+            'types' =>[
+                'required',
+                'exists:types,id'
             ]
+
         ];
     }
 
@@ -71,6 +76,7 @@ class StoreRestaurantRequest extends FormRequest
             'image.image' => 'Verifica che il file sia un immagine',
             'description.min' => 'Lunghezza minima :min caratteri',
             'description.max' => 'Lunghezza massima :max caratteri',
+            'types.required' => 'seleziona almeno una categoria'
 
         ];
     }

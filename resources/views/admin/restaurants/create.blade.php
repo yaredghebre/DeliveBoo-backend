@@ -56,6 +56,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <p>Aggiungi una descrizione della tua attività</p>
                         <div class="form-floating">
                             <textarea class="form-control" placeholder="Descrizione Attività" id="restaurant_description" style="height: 160px"
                                 name="description">{{ old('description') }}</textarea>
@@ -64,18 +65,25 @@
 
                     </div>
 
-                    <p>seleziona le categorie che più si addicono al tuo ristorante</p>
+                    <p>seleziona le categorie che più si addicono alla tua attività</p>
                     <div class="mb-3 types-checkbox form-tags-container row ">
                         
                         @foreach ($types as $type)
-                        <div class="form-check form-ceck-tag">
-                            <label class="form-check-label absolute" for="type-{{$type->id}}">
+                        <div class="form-check form-ceck-tag ">
+                           
+                            <input class="form-check-input ms_form-check @error('type_id')is-invalid @enderror  " type="checkbox" value="{{$type->id}}" id="type-{{$type->id}}" name="types[]">
+                            <label class="form-check-label absolute " for="type-{{$type->id}}">
                                 {{$type->name}}
                             </label>
-                            <input class="form-check-input ms_form-check" type="checkbox" value="{{$type->id}}" id="type-{{$type->id}}" name="Types[]">
+                            
                         </div>
                         @endforeach
+                        @error('type_id')   
+                            <p class="checkbox-error ">seleziona almeno una categoria</p>   
+                        @enderror
+                        
                     </div>
+
                     <div class="text-center">
                         <button type="submit" class="btn btn-success">Salva</button>
                     </div>
