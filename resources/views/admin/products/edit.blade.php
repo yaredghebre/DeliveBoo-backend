@@ -25,7 +25,7 @@
             <select class="form-select" aria-label="Default select example" name="category_id" id="category">
                {{--  <option value="{{$product->category_id}}">{{ $product->category?->name }}</option> --}}
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" @selected($category->id === old('category_id', $product->category?->id))> {{ $category->name }} </option>
+                    <option value="{{ $category->id }}" @selected($category->id === old('category_id', $product->category_id))> {{ $category->name }} </option>
                 @endforeach
                 
             </select>
