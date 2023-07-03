@@ -1,5 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
-
+//CREATE RESTAURANT .BLADE
 .form-tags-container{
     flex-wrap: wrap;
     justify-content: center;
@@ -42,5 +42,8 @@
             margin: 0;
         }
     }
-
+    .checkbox-error{
+        color: var(--bs-form-invalid-color);
+        font-size: 0.875em;
+    }
 }

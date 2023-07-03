@@ -38,11 +38,12 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
+        
         $data = $request->validated();
         $data['user_id'] = Auth::user()->id;
         $path = Storage::disk('public')->put('img', $request->image);
         $data['image'] = $path;
-        Restaurant::create($data);
+        Restaurant::create($data)->types()->attach($data['types']);
         return redirect()->route('admin.dashboard');
     }
 
