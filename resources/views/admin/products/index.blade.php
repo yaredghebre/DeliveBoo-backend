@@ -34,6 +34,11 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
                         </form>
+
+                        <a href="{{route('admin.products.edit', $item->id)}}" class="btn btn-success">
+                            <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+                        </a>
+
                     </div>
                 </div>
             @endforeach
