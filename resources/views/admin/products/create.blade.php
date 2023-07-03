@@ -16,20 +16,20 @@
                 @endforeach
             </select>
             <div class="mb-3">
-                <label for="price" class="form-label">inserisci il prezzo</label>
+                <label for="price" class="form-label">Inserisci il prezzo</label>
                 <input type="number" class="form-control" id="price" name="price" step="0.01" min="0"
                     value="">
             </div>
             <div class="mb-3">
-                <label for="image">inserisci img</label>
+                <label for="image">Inserisci img</label>
                 <input class="form-control" type="file"name="image" id="image">
             </div>
 
             <div class="mb-3">
-                <label for="description" class="form-label">inserisci descrizione del prodotto</label>
+                <label for="description" class="form-label">Inserisci descrizione del prodotto</label>
                 <textarea class="form-control" id="description" name="description" value="" rows="3"></textarea>
             </div>
-            <button class="btn btn-primary" type="submit">salva prodotto</button>
+            <button class="btn btn-primary" type="submit">Salva prodotto</button>
 
         </form>
     </div>
