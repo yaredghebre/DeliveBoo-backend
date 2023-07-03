@@ -33,6 +33,8 @@ class StoreProductRequest extends FormRequest
                 'min:4',
             ], 'price' => [
                 'required',
+                'numeric',
+                'min:0.01'
                
             ],
             'description' => [
@@ -53,6 +55,7 @@ class StoreProductRequest extends FormRequest
             'name.min' => 'Lunghezza minima :min caratteri',
             'name.max' => 'Lunghezza massima :max caratteri',
             'price.required'=>'campo obbligatorio ',
+            'price.min'=>'inserisci numero positivo',
             'image.required' => 'Campo obbligatorio',
             'description.min' => 'Lunghezza minima :min caratteri',
             'description.max' => 'Lunghezza massima :max caratteri',

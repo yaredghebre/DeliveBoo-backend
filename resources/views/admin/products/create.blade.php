@@ -17,21 +17,22 @@
             @enderror
             </div>
            
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" name="category_id">
                 <option selected>Seleziona una categoria</option>
                 @foreach ($categories as $category)
               
-                    <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" @selected(old("category_id") == $category->id)>{{ $category->name }}</option>
                 @endforeach
             </select>
             <div class="mb-3">
                 <label for="price" class="form-label">Inserisci il prezzo</label>
-                <input type="number" class="form-control @error('price')is-invalid @enderror" id="price" name="price" step="0.01" min="0"
+                <input type="number" class="form-control @error('price')is-invalid @enderror" id="price" name="price" step="0.01" min="1"
                     value="{{old('price')}}">
                     @error('price')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
+                    
                 @enderror
             </div>
             <div class="mb-3">
