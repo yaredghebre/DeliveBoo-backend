@@ -5,11 +5,14 @@
         @if ($errors->any())
             <p>attenzione controlla errori</p>  
         @endif
+        @php var_dump($product->category_id)@endphp
 
-        <form class="mt-4" action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+        <form class="mt-4" action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
+
             <div class="mb-3">
-                <label for="name" class="form-label">nome prodotto</label>
+                <label for="name" class="form-label">Nome prodotto</label>
                 <input type="text"class="form-control @error('name')is-invalid @enderror" id="name" name="name" value="{{old('name', $product->name)}}">
                 @error('name')
                     <div class="invalid-feedback">
@@ -18,17 +21,18 @@
                 @enderror
             </div>
            
-            <select class="form-select" aria-label="Default select example" name="category_id">
-                <option selected>Cambia la categoria</option>
+            <label for="category" class="form-label">Cambia categoria</label>
+            <select class="form-select" aria-label="Default select example" name="category_id" id="category">
+               {{--  <option value="{{$product->category_id}}">{{ $product->category?->name }}</option> --}}
                 @foreach ($categories as $category)
-              
-                    <option value="{{ $category->id }}" @selected(old("category_id") == $category->id)>{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" @selected($category->id === old('category_id', $product->category?->id))> {{ $category->name }} </option>
                 @endforeach
+                
             </select>
             <div class="mb-3">
                 <label for="price" class="form-label">Modifica il prezzo</label>
                 <input type="number" class="form-control @error('price')is-invalid @enderror" id="price" name="price" step="0.01" min="1"
-                    value="{{old('price')}}">
+                    value="{{old('price', $product->price)}}">
                 @error('price')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -38,7 +42,7 @@
 
             <div class="mb-3">
                 <label for="image">Modifica img</label>
-                <input class="form-control @error('image')is-invalid @enderror" type="file"name="image" id="image" value="{{old('image')}}">
+                <input class="form-control @error('image')is-invalid @enderror" type="file" name="image" id="image" value="{{old('image')}}">
                 @error('image')
                     <div class="invalid-feedback">
                         {{ $message }}
