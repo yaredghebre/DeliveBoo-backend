@@ -5,7 +5,8 @@
         @if ($errors->any())
             <p>attenzione controlla errori</p>  
         @endif
-        @php var_dump($product->category_id)@endphp
+
+        {{-- @php var_dump($product->category_id)@endphp --}}
 
         <form class="mt-4" action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -21,14 +22,15 @@
                 @enderror
             </div>
            
-            <label for="category" class="form-label">Cambia categoria</label>
-            <select class="form-select" aria-label="Default select example" name="category_id" id="category">
-               {{--  <option value="{{$product->category_id}}">{{ $product->category?->name }}</option> --}}
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" @selected($category->id === old('category_id', $product->category_id))> {{ $category->name }} </option>
-                @endforeach
-                
-            </select>
+            <div class="mb-3">
+                <label for="category" class="form-label">Cambia categoria</label>
+                <select class="form-select" aria-label="Default select example" name="category_id" id="category">
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" @selected($category->id === old('category_id', $product->category_id))> {{ $category->name }} </option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="mb-3">
                 <label for="price" class="form-label">Modifica il prezzo</label>
                 <input type="number" class="form-control @error('price')is-invalid @enderror" id="price" name="price" step="0.01" min="1"
@@ -41,13 +43,17 @@
             </div>
 
             <div class="mb-3">
-                <label for="image">Modifica img</label>
+                <label for="image">Modifica immagine</label>
                 <input class="form-control @error('image')is-invalid @enderror" type="file" name="image" id="image" value="{{old('image')}}">
                 @error('image')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                 @enderror
+
+                @if ($product->image)
+                    <img src="{{ asset('storage/' . $product->image) }}" class="w-25">
+                @endif
             </div>
 
             <div class="mb-3">
@@ -62,5 +68,8 @@
             <button class="btn btn-primary" type="submit">Salva prodotto modificato</button>
 
         </form>
+
+        <a href="{{ route('admin.products.index') }}" class="btn btn-warning mt-3">Torna ai prodotti</a>
+
     </div>
 @endsection

@@ -35,17 +35,17 @@ class StoreProductRequest extends FormRequest
                 'required',
                 'numeric',
                 'min:0.01'
-               
+
             ],
             'description' => [
                 'nullable',
                 'min:6',
                 'max:1000'
-            ], 
+            ],
             'category_id' => [
                 'required',
             ],
-           
+
         ];
     }
 
@@ -55,13 +55,13 @@ class StoreProductRequest extends FormRequest
             'name.required' => 'Campo obbligatorio',
             'name.min' => 'Lunghezza minima :min caratteri',
             'name.max' => 'Lunghezza massima :max caratteri',
-            'category_id.required'=>'Campo obbligatorio',
-            'price.required'=>'Campo obbligatorio ',
-            'price.min'=>'Inserisci numero positivo',
+            'category_id.required' => 'Campo obbligatorio',
+            'price.required' => 'Campo obbligatorio ',
+            'price.min' => 'Inserisci numero positivo',
             'image.required' => 'Campo obbligatorio',
             'description.min' => 'Lunghezza minima :min caratteri',
             'description.max' => 'Lunghezza massima :max caratteri',
-            'image.visible'=>'Campo obbligatorio'
+            'image.visible' => 'Campo obbligatorio'
 
         ];
     }
