@@ -77,9 +77,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit(Product $product)
+    {   
+        $categories = Category::all();
+         return view('admin.products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -91,13 +92,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        
         $data=$request->all();
         $product->update($data);
-        return redirect()->route('admin.products.index');
-        
-        
-
+        return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato modificato con successo");
     }
 
     /**

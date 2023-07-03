@@ -55,7 +55,7 @@ class StoreRestaurantRequest extends FormRequest
             'types' =>[
                 'required',
                 'exists:types,id'
-            ]
+            ],
 
         ];
     }
