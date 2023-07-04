@@ -99,7 +99,7 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        $data = $request->validated();
+        $data = $request->validated(); 
         // $data['image'] = null;
 
         if ($request->hasFile('image')) {
