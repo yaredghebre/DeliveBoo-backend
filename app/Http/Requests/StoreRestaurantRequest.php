@@ -37,7 +37,6 @@ class StoreRestaurantRequest extends FormRequest
             'vat_number' => [
                 'required',
                 'unique:restaurants',
-                'numeric',
                 'size:11',
             ],
             'image' => [

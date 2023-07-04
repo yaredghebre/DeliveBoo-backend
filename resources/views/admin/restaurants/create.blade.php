@@ -4,7 +4,7 @@
 
 
 
-    <div class="containter vh-100">
+    <div class="containter vh-100  restaurants">
         @if ($errors->any())
             <ul class="alert alert-danger w-50 m-auto mt-4 list-unstyled">
                 <h4 class="text-center" >Attenzione</h4>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="restaurant_vat_number" class="form-label">P.IVA</label>
-                        <input type="text" minlength="11" maxlength="11" class="form-control @error('vat_number')is-invalid @enderror" id="restaurant_vat_number" name="vat_number" value="{{ old('vat_number') }}">
+                        <input type="number" min="1" minlength="11" maxlength="11" class="form-control @error('vat_number')is-invalid @enderror" id="restaurant_vat_number" name="vat_number" value="{{ old('vat_number') }}">
                         @error('vat_number')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -76,7 +76,7 @@
                         
                         @foreach ($types as $type)
                         <div class="form-check form-ceck-tag ">
-                            <input class="form-check-input ms_form-check @error('type_id')is-invalid @enderror  " type="checkbox" value="{{$type->id}}" id="type-{{$type->id}}" name="types[]" @checked(in_array($type->id,old('types',[])))>
+                            <input class="form-check-input ms_form-check @error('types')is-invalid @enderror  " type="checkbox" value="{{$type->id}}" id="type-{{$type->id}}" name="types[]" @checked(in_array($type->id,old('types',[])))>
                             <label class="form-check-label absolute " for="type-{{$type->id}}">
                                 {{$type->name}}
                             </label>
