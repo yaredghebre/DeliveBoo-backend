@@ -71,9 +71,9 @@
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-12 text-center">
                                     <span>non sei ancora registrato?</span>
-                                    <button type="submit" class="btn btn-link">
+                                    <a href="{{ route('register')}}" class="btn btn-link">
                                         Registrati
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </form>
