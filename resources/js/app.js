@@ -51,7 +51,10 @@ if (imageInput && imagePreview) {
         reader.addEventListener("load", function() {
             imagePreview.src = reader.result;
             console.log(imagePreview);
-            currentImage.classList.add("d-none");
+            
+            if (currentImage) {
+                currentImage.classList.add("d-none");
+            }
             imagePreview.classList.remove("d-none");
 
         });
