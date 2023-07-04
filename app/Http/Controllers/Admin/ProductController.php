@@ -80,10 +80,14 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
-    {   
+    {
         $categories = Category::all();
+        if ($product->restaurant->user_id === Auth::user()->id) {
 
-         return view('admin.products.edit', compact('product', 'categories'));
+            return view('admin.products.edit', compact('product', 'categories'));
+        } else {
+            return redirect()->route('admin.products.index')->with('message', 'Il prodotto selezionato non è disponibile nel tuo ristorante');
+        }
     }
 
     /**
@@ -116,10 +120,10 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
 
-        if($product->image){
+        if ($product->image) {
             Storage::delete($product->image);
         }
         $product->delete();
-        return redirect()->route('admin.products.index')->with('message',"{$product->name} è sato cancellato");
+        return redirect()->route('admin.products.index')->with('message', "{$product->name} è sato cancellato");
     }
 }
