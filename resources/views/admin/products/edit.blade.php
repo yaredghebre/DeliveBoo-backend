@@ -52,6 +52,10 @@
                 @enderror
             </div>
 
+            @if ($product->image)
+                <img src="{{ asset('storage/') }}" alt="">
+            @endif
+
             <div class="mb-3">
                 <label for="description" class="form-label">Modifica descrizione del prodotto</label>
                 <textarea class="form-control @error('description')is-invalid @enderror" id="description" name="description" value="" rows="3">{{old('description', $product->description)}}</textarea>

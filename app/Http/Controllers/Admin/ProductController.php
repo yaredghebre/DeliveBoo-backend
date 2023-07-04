@@ -100,6 +100,16 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         $data = $request->validated();
+        // $data['image'] = null;
+
+        if ($request->hasFile('image')) {
+
+            Storage::delete($product->image);
+
+            $path = Storage::disk('public')->put('image', $request->image);
+            $data['image'] = $path;
+        }
+        
         $product->update($data);
         return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato modificato con successo");
     }
