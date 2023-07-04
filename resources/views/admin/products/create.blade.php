@@ -1,12 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container w-50">
-        @if ($errors->any())
-            <p>Attenzione controlla errori</p>
-            @php
-                var_dump($errors->messages());
-            @endphp
-        @endif
+        @include('partials.session-message')
 
         <form class="mt-4" action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf

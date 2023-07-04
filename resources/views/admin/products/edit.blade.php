@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="container w-50">
+        @include('partials.session-message')
         @if ($errors->any())
-            <p>attenzione controlla errori</p>  
+            {{-- <p>attenzione controlla errori</p>   --}}
         @endif
 
-        {{-- @php var_dump($product->category_id)@endphp --}}
 
         <form class="mt-4" action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
             @csrf

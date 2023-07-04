@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Restaurant;
@@ -11,7 +12,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use SebastianBergmann\CodeCoverage\Report\Xml\Project;
+
 
 class ProductController extends Controller
 {
@@ -45,7 +46,7 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $data['visible'] = true;
         $data['restaurant_id'] = Auth::user()->restaurant->id;
         if ($request->hasFile('image')) {
@@ -91,10 +92,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreProductRequest $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $product->update($data);
+        $product = Product::all();
+        dd($product);
         return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato modificato con successo");
     }
 

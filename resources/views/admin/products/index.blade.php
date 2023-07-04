@@ -4,6 +4,11 @@
     @include('partials.session-message');
     @include('partials.modal-delete');
 
+    @if ($errors->any())
+        @foreach ($errors->all() as $item)
+            {{$item}}
+        @endforeach
+    @endif
 
 
     <div class="container-fluid w-75 mt-5">
