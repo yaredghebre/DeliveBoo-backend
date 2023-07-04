@@ -50,10 +50,6 @@
                         {{ $message }}
                     </div>
                 @enderror
-
-                @if ($product->image)
-                    <img src="{{ asset('storage/' . $product->image) }}" class="w-25">
-                @endif
             </div>
 
             <div class="mb-3">

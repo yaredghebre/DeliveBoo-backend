@@ -82,6 +82,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {   
         $categories = Category::all();
+
          return view('admin.products.edit', compact('product', 'categories'));
     }
 
@@ -96,8 +97,13 @@ class ProductController extends Controller
     {
         $data = $request->validated();
         $product->update($data);
-        $product = Product::all();
-        dd($product);
+        return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato modificato con successo");
+    }
+
+    public function toggleVisible(Request $request, Product $product)
+    {
+        $data = $request->all();
+        $product->update($data);
         return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato modificato con successo");
     }
 
