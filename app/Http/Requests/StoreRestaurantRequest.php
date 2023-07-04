@@ -38,8 +38,6 @@ class StoreRestaurantRequest extends FormRequest
                 'required',
                 'unique:restaurants',
                 'numeric',
-                'min:11',
-                'max:11',
                 'size:11',
             ],
             'image' => [
