@@ -7,7 +7,7 @@
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Nome prodotto *</label>
-                <input required type="text"class="form-control @error('name')is-invalid @enderror" id="name" name="name"
+                <input required maxlength = "50" minlength="4" type="text"class="form-control @error('name')is-invalid @enderror" id="name" name="name"
                     value="{{ old('name') }}">
                 @error('name')
                     <div class="invalid-feedback">
@@ -56,7 +56,7 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label">Inserisci descrizione del prodotto</label>
-                <textarea class="form-control @error('description')is-invalid @enderror" id="description" name="description"
+                <textarea minlength="6" maxlength="1000" class="form-control @error('description')is-invalid @enderror" id="description" name="description"
                     value="" rows="3">{{ old('description') }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">
