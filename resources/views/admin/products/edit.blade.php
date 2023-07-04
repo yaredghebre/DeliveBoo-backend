@@ -43,8 +43,11 @@
             </div>
 
             <div class="mb-3">
-                <label for="image">Modifica immagine</label>
-                <input class="form-control @error('image')is-invalid @enderror" type="file" name="image" id="image" value="{{old('image')}}">
+                <label for="image-input">Modifica immagine</label>
+                <input class="form-control @error('image')is-invalid @enderror" type="file" name="image" id="image-input" value="{{old('image')}}" >
+                <div>
+                    <img class="d-none w-25" id="image-preview" src="" alt="">
+                </div>
                 @error('image')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -53,7 +56,7 @@
             </div>
 
             @if ($product->image)
-                <img src="{{ asset('storage/') }}" alt="">
+                <img id="current-image" width="150" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" >
             @endif
 
             <div class="mb-3">
@@ -65,6 +68,7 @@
                 </div>
             @enderror
             </div>
+
             <button class="btn btn-primary" type="submit">Salva prodotto modificato</button>
 
         </form>
