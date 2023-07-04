@@ -22,6 +22,17 @@ if (deleteBtns.length > 0) {
                 btn.parentElement.submit();
             });
             deleteModal.show();
+
         });
+    });
+}
+
+const messageBanner = document.querySelectorAll(".ms_alert_handle");
+
+if (messageBanner.length > 0) {
+    messageBanner.forEach((msgBanner) => {
+        setTimeout(function() {
+            msgBanner.style.display = "none";
+        }, 3000);
     });
 }
