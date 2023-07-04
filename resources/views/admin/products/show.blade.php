@@ -18,10 +18,10 @@
                     @endif
                 </div>
 
-                @if ($product->type)
+                @if ($product->category)
                     <h4 class="card-text">Categoria: </h4>
                     <ul>
-                        <li>{{ $category->name }}</li>
+                        <li>{{ $product->category->name }}</li>
                     </ul>
                 @else
                     <h4 class="card-text">categoria: </h4>

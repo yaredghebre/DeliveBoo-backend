@@ -16,7 +16,7 @@ class Product extends Model
     }
 
     // N to 1 -> categories
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
