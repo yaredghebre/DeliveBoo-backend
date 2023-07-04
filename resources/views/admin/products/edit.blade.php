@@ -53,7 +53,7 @@
             </div>
 
             @if ($product->image)
-                <img src="{{ asset('storage/') }}" alt="">
+                <img width="150" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
             @endif
 
             <div class="mb-3">

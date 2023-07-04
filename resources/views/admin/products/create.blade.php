@@ -44,7 +44,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="image">Inserisci img</label>
+                <label for="image">Inserisci immagine</label>
                 <input class="form-control @error('image')is-invalid @enderror" type="file" name="image" id="image"
                     value="{{ old('file') }}">
                 @error('file')
@@ -53,6 +53,12 @@
                     </div>
                 @enderror
             </div>
+
+            {{-- $product not defined, da fixare nel controller --}}
+            
+            {{-- @if ($product->image)
+                <img width="150" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+            @endif --}}
 
             <div class="mb-3">
                 <label for="description" class="form-label">Inserisci descrizione del prodotto</label>
