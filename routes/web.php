@@ -25,6 +25,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('restaurants', RestaurantController::class);
     Route::resource('products', ProductController::class)->parameters(['products'=>'product:id']);
+    Route::get('/products/visible/{product}', [ProductController::class, 'toggleVisible'])->name('product.visible');
 
 
     // route for profile edit
