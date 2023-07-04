@@ -37,6 +37,9 @@ class StoreRestaurantRequest extends FormRequest
             'vat_number' => [
                 'required',
                 'unique:restaurants',
+                'numeric',
+                'min:11',
+                'max:11',
                 'size:11',
             ],
             'image' => [
@@ -71,6 +74,7 @@ class StoreRestaurantRequest extends FormRequest
             'address.max' => 'Lunghezza massima :max caratteri',
             'vat_number.required' => 'Campo obbligatorio',
             'vat_number.unique' => 'Già esistente',
+            'vat_number.numeric'=>'inserisci solo numeri',
             'vat_number.size' => 'Verifica che siano :size caratteri',
             'image.required' => 'Campo obbligatorio',
             'image.image' => 'Verifica che il file sia un immagine',
