@@ -24,7 +24,7 @@ nav{
         img{
             position: relative;
             width: 200px;
-            top:35%;
+            top:0;
         }
     }
 }
@@ -39,7 +39,7 @@ nav{
     background-size: cover;
 
     .ms_card{
-        background-color: rgba($color: #333333, $alpha: .5);
+        background-color: rgba($color: #333333, $alpha: .7);
         color: #ffffff;
         i{
             color: #fff;

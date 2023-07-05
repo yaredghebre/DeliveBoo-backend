@@ -71,7 +71,7 @@
     
                             <p class="w-100 text-center">* Questi campi sono obbligatori </p>
     
-                            <div class="mb-4 row mb-0">
+                            <div class="mb-4 row mb-0 justify-content-center">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-warning" id="btn-register">
                                         {{ __('Registrati') }}
