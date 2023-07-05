@@ -21,7 +21,7 @@
                 <label for="category" class="form-label">Inserisci la categoria *</label>
                 <select required class="form-select @error('category_id')is-invalid @enderror"
                     aria-label="Default select example" name="category_id" id="category">
-                    <option selected>Seleziona una categoria</option>
+                    <option value="" selected>Seleziona una categoria</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->name }}</option>
                     @endforeach
