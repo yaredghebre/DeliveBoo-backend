@@ -64,4 +64,13 @@ if (imageInput && imagePreview) {
 }
 
 
-
+// checkbox required
+const checks = document.querySelectorAll(".checkTypes");
+for (let i = 0; i < checks.length; i++) {
+  checks[i].addEventListener("click", function() {
+    for (var k = 0; k < checks.length; k++) {
+        checks[k].removeAttribute("required");
+      }
+    
+  });
+}
