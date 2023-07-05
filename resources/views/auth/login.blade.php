@@ -55,7 +55,7 @@
     
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-10 offset-md-4">
-                                    <button type="submit" class="btn btn-warning">
+                                    <button type="submit" class="btn btn-warning" id="login">
                                         Accedi
                                     </button>
                                     
@@ -83,4 +83,8 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('script')
+    <script src="{{asset('helpers/loginFormValidation.js')}}"></script>
 @endsection

@@ -86,3 +86,6 @@
     </div>
 </section>
 @endsection
+@section('script')
+    <script src="{{asset('helpers/RegisterFormValidation.js')}}"></script>
+@endsection
