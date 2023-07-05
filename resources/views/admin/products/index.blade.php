@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('partials.session-message');
-    @include('partials.modal-delete');
+    @include('partials.session-message')
+    @include('partials.modal-delete')
 
     @if ($errors->any())
         @foreach ($errors->all() as $item)
