@@ -59,7 +59,7 @@ class ProductController extends Controller
             $product->categories()->attach($request->categories);
         }
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato creato con successo");;
     }
 
     /**
@@ -70,7 +70,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('admin.products.show', compact('product'));
+        if($product->restaurant->id === Auth::user()->restaurant->id){
+            return view('admin.products.show', compact('product'));
+        }
+        return view('errors.404');
     }
 
     /**
