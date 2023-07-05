@@ -23,10 +23,9 @@ class RestaurantController extends Controller
     {
         $types = Type::all();
         if (Auth::user()->restaurant) {
-            $restaurant = Auth::user()->restaurant;
             return redirect()->route('admin.dashboard')->with('message', "Possiedi già un ristorante");
         } else {
-            return view('admin.restaurants.create',compact('types'));
+            return view('admin.restaurants.create', compact('types'));
         }
     }
 
@@ -38,7 +37,7 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        
+
         $data = $request->validated();
         $data['user_id'] = Auth::user()->id;
         $path = Storage::disk('public')->put('img', $request->image);
