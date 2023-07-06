@@ -17,7 +17,7 @@
                 <form action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="restaurant_name" class="form-label">Nome Attività</label>
+                        <label for="restaurant_name" class="form-label">Nome Attività *</label>
                         <input type="text" minlength="4" maxlength="50" required class="form-control @error('name')is-invalid @enderror" id="restaurant_name" name="name" value="{{ old('name') }}">
                         @error('name')
                             <div class="invalid-feedback">
@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="restaurant_address" class="form-label">Indirizzo Attività</label>
+                        <label for="restaurant_address" class="form-label">Indirizzo Attività *</label>
                         <input type="text" minlength="5" maxlength="60"required class="form-control @error('address')is-invalid @enderror" id="restaurant_address" name="address" value="{{ old('address') }}">
                         @error('address')
                         <div class="invalid-feedback">
@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="restaurant_vat_number" class="form-label">P.IVA</label>
+                        <label for="restaurant_vat_number" class="form-label">P.IVA *</label>
                         <input type="text"  minlength="11" maxlength="11" required class="form-control @error('vat_number')is-invalid @enderror" id="restaurant_vat_number" name="vat_number" value="{{ old('vat_number') }}">
                         @error('vat_number')
                             <div class="invalid-feedback">
@@ -79,7 +79,7 @@
 
                     </div>
 
-                    <p>seleziona le categorie che più si addicono alla tua attività</p>
+                    <p>seleziona le categorie che più si addicono alla tua attività *</p>
                     <div class="mb-3 types-checkbox form-tags-container row ">
                         
                         @foreach ($types as $type)
