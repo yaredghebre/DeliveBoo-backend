@@ -17,7 +17,13 @@
 
             @foreach ($products as $item)
                 <div class="card">
-                    <img src="{{ asset('storage/' . $item->image) }}" class="card-img-top w-25" alt="{{ $item->name }}">
+                    <div class="my-3">
+                        @if ($item->image)
+                            <img width="300" src="{{ asset('storage/' . $item->image) }}" alt="DeliveBoo">
+                        @else
+                        <img width="300" src="{{ asset('img/logo.png') }}" alt="Deliveboo">
+                        @endif
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ $item->name }}</h5>
 

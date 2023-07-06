@@ -4,9 +4,9 @@ const email = document.getElementById('email');
 const errorEmail = document.createElement('span');
 errorEmail.classList.add('invalid-feedback');
 const emailErrorType=[
-    "l'email deve contere una '@'",
-    "l'email deve contenere un prefisso '.com , .it'",
-    "inserisci un email valida"
+    "La email deve contere una '@'",
+    "La email deve contenere un prefisso '.com , .it'",
+    "Inserisci un email valida"
 ]
 
 //password + password array
@@ -15,7 +15,7 @@ const errorPassword = document.createElement('span');
 errorPassword.classList.add('invalid-feedback')
 const passwordConfirm = document.getElementById("password-confirm");
 const btnRegister = document.getElementById("btn-register");
-const passwordErrorType = ['la password deve contenere almeno 8 caratteri']
+const passwordErrorType = ['La password deve contenere almeno 8 caratteri']
 
 //check password length
 password.addEventListener("keyup",()=>{

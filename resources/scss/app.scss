@@ -21,6 +21,7 @@ nav{
         justify-content: center;
         align-items: center;
         height: 50px;
+        overflow: hidden;
         img{
             position: relative;
             width: 200px;
@@ -47,6 +48,13 @@ nav{
 
         .invalid-feedback{
             color: #FFC107;
+            font-size: 18px;
+            font-weight: bold;
+
+            h6 {
+                font-size: 18px;
+                font-weight: bold;
+            }
         }
         .is-invalid{
             border-color: #FFC107;

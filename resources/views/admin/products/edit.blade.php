@@ -33,7 +33,7 @@
 
             <div class="mb-3">
                 <label for="price" class="form-label">Modifica il prezzo *</label>
-                <input required type="number" class="form-control @error('price')is-invalid @enderror" id="price" name="price" step="0.01" min="1"
+                <input required type="number" class="form-control @error('price')is-invalid @enderror" id="price" name="price" step="0.01" min="0"
                     value="{{old('price', $product->price)}}">
                 @error('price')
                     <div class="invalid-feedback">
@@ -44,7 +44,7 @@
 
             <div class="mb-3">
                 <label for="image-input">Modifica immagine</label>
-                <input required class="form-control @error('image')is-invalid @enderror" type="file" name="image" id="image-input" value="{{old('image')}}" >
+                <input class="form-control @error('image')is-invalid @enderror" type="file" name="image" id="image-input" value="{{old('image')}}" >
                 <div>
                     <img class="d-none w-25" id="image-preview" src="" alt="">
                 </div>

@@ -38,7 +38,7 @@
             <div class="mb-3">
                 <label for="price" class="form-label">Inserisci il prezzo *</label>
                 <input required type="number" class="form-control @error('price')is-invalid @enderror" id="price"
-                    name="price" step="0.01" min="1" value="{{ old('price') }}">
+                    name="price" step="0.01" min="0" value="{{ old('price') }}">
                 @error('price')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -47,12 +47,12 @@
             </div>
             <div class="mb-3">
                 <label for="image-input">Inserisci immagine</label>
-                <input required class="form-control @error('image')is-invalid @enderror" type="file" name="image"
+                <input class="form-control @error('image')is-invalid @enderror" type="file" name="image"
                     id="image-input" value="{{ old('file') }}">
                 <div>
                     <img class="d-none w-25" id="image-preview" src="" alt="">
                 </div>
-                @error('file')
+                @error('image')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
