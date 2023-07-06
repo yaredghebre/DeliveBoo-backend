@@ -7,12 +7,12 @@ errorPassword.classList.add('invalid-feedback')
 
 //messaggi di errore x email
 const emailErrorType=[
-    "l'email deve contere una '@'",
-    "l'email deve contenere un prefisso '.com , .it'",
-    "inserisci un email valida"
+    "La email deve contere una '@'",
+    "La email deve contenere un prefisso '.com , .it'",
+    "Inserisci un email valida"
 ]
 //messaggi di erroe per password
-const passwordErrorType = ['la password deve contenere almeno 8 caratteri']
+const passwordErrorType = ['La password deve contenere almeno 8 caratteri']
 
 //check email
 email.addEventListener("keyup",()=>{
