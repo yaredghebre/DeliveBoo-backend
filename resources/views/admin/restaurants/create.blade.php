@@ -52,7 +52,7 @@
                             Seleziona un immagine di copertina per la tua
                             attività
                         </label>
-                        <input type="file" required class="form-control   @error('image')is-invalid @enderror" id="image-input" name="image" value="{{ old('file') }}">
+                        <input type="file" class="form-control   @error('image')is-invalid @enderror" id="image-input" name="image" value="{{ old('file') }}">
                         <div>
                             <img class="d-none w-25" id="image-preview" src="" alt="">
                         </div>
