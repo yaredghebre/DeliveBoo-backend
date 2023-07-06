@@ -47,12 +47,16 @@
             </div>
             <div class="mb-3">
                 <label for="image-input">Inserisci immagine</label>
-                <input class="form-control" type="file" name="image"
+                <input class="form-control @error('image')is-invalid @enderror" type="file" name="image"
                     id="image-input" value="{{ old('file') }}">
                 <div>
                     <img class="d-none w-25" id="image-preview" src="" alt="">
                 </div>
-            
+                @error('image')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
 
             <div class="mb-3">
