@@ -39,7 +39,7 @@
 
                     <div class="mb-3">
                         <label for="restaurant_vat_number" class="form-label">P.IVA *</label>
-                        <input type="text"  minlength="11" maxlength="11" required class="form-control @error('vat_number')is-invalid @enderror" id="restaurant_vat_number" name="vat_number" value="{{ old('vat_number') }}">
+                        <input id="iva" type="text"  minlength="11" maxlength="11" required class="form-control @error('vat_number')is-invalid @enderror" id="restaurant_vat_number" name="vat_number" value="{{ old('vat_number') }}">
                         @error('vat_number')
                             <div class="invalid-feedback">
                                 {{ $message }}

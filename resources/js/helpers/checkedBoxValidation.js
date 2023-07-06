@@ -12,3 +12,27 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// controllo su pIva
+const iva = document.getElementById('iva');
+const errorPiva = document.createElement('span');
+errorPiva.classList.add('invalid-feedback');
+const ivaError="inserisci solo numeri";
+
+
+function requiredNumber(string){
+    if(isNaN(string)){
+        errorPiva.innerText = `${ivaError}`
+        iva.classList.add('is-invalid')
+        iva.after(errorPiva);    
+    }else {
+        iva.classList.remove('is-invalid')
+        errorPiva.innerText = ""
+    }
+}
+iva.addEventListener('keyup', function(){
+    const value = iva.value;
+    requiredNumber(value);
+   
+});
+
