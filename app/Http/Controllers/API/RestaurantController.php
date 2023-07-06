@@ -15,7 +15,7 @@ class RestaurantController extends Controller
 
         if ($request->has('type_id')) {
             $query->whereHas('types', function ($q) use ($request) {
-                $q->whereIn('id', [$request->type_id]);
+                $q->whereIn('id', $request->type_id);
             });
         }
 
@@ -26,19 +26,18 @@ class RestaurantController extends Controller
             'results' => $restaurants
         ]);
     }
-    public function getProducts(Request $request){
-    if($request->has('restaurant_id')){
-      $success=true;
-      $results=Product::where('restaurant_id',$request->restaurant_id)->get();
-
-    }else{
-        $success=false;
-        $results='error:restaurant not found';
+    public function getProducts(Request $request)
+    {
+        if ($request->has('restaurant_id')) {
+            $success = true;
+            $results = Product::where('restaurant_id', $request->restaurant_id)->get();
+        } else {
+            $success = false;
+            $results = 'error:restaurant not found';
+        }
+        return response()->json([
+            'success' => $success,
+            'results' => $results,
+        ]);
     }
-    return response()->json([
-        'success'=>$success,
-        'results'=>$results,
-    ]);
-    
-}
 }

@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-@include('partials.session-message')
+    @include('partials.session-message')
 
 
     <div class="containter vh-100  restaurants">
@@ -18,7 +17,9 @@
                     @csrf
                     <div class="mb-3">
                         <label for="restaurant_name" class="form-label">Nome Attività *</label>
-                        <input type="text" minlength="4" maxlength="50" required class="form-control @error('name')is-invalid @enderror" id="restaurant_name" name="name" value="{{ old('name') }}">
+                        <input type="text" minlength="4" maxlength="50" required
+                            class="form-control @error('name')is-invalid @enderror" id="restaurant_name" name="name"
+                            value="{{ old('name') }}">
                         @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -29,7 +30,9 @@
 
                     <div class="mb-3">
                         <label for="restaurant_address" class="form-label">Indirizzo Attività *</label>
-                        <input type="text" minlength="5" maxlength="60"required class="form-control @error('address')is-invalid @enderror" id="restaurant_address" name="address" value="{{ old('address') }}">
+                        <input type="text" minlength="5" maxlength="60"required
+                            class="form-control @error('address')is-invalid @enderror" id="restaurant_address"
+                            name="address" value="{{ old('address') }}">
                         @error('address')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -39,7 +42,9 @@
 
                     <div class="mb-3">
                         <label for="restaurant_vat_number" class="form-label">P.IVA *</label>
-                        <input id="iva" type="text"  minlength="11" maxlength="11" required class="form-control @error('vat_number')is-invalid @enderror" id="restaurant_vat_number" name="vat_number" value="{{ old('vat_number') }}">
+                        <input id="iva" type="text" minlength="11" maxlength="11" required
+                            class="form-control @error('vat_number')is-invalid @enderror" id="restaurant_vat_number"
+                            name="vat_number" value="{{ old('vat_number') }}">
                         @error('vat_number')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -52,7 +57,8 @@
                             Seleziona un immagine di copertina per la tua
                             attività
                         </label>
-                        <input type="file" class="form-control   @error('image')is-invalid @enderror" id="image-input" name="image" value="{{ old('file') }}">
+                        <input type="file" class="form-control   @error('image')is-invalid @enderror" id="image-input"
+                            name="image" value="{{ old('file') }}">
                         <div>
                             <img class="d-none w-25" id="image-preview" src="" alt="">
                         </div>
