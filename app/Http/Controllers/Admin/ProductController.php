@@ -59,7 +59,7 @@ class ProductController extends Controller
             $product->categories()->attach($request->categories);
         }
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato creato con successo");;
     }
 
     /**
@@ -70,7 +70,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('admin.products.show', compact('product'));
+        if($product->restaurant->id === Auth::user()->restaurant->id){
+            return view('admin.products.show', compact('product'));
+        }
+        return view('errors.403');
     }
 
     /**
@@ -86,7 +89,7 @@ class ProductController extends Controller
 
             return view('admin.products.edit', compact('product', 'categories'));
         } else {
-            return redirect()->route('admin.products.index')->with('message', 'Il prodotto selezionato non è disponibile nel tuo ristorante');
+            return view('errors.403');
         }
     }
 
@@ -99,7 +102,7 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        $data = $request->validated(); 
+        $data = $request->validated();
         // $data['image'] = null;
 
         if ($request->hasFile('image')) {
@@ -109,7 +112,7 @@ class ProductController extends Controller
             $path = Storage::disk('public')->put('image', $request->image);
             $data['image'] = $path;
         }
-        
+
         $product->update($data);
         return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato modificato con successo");
     }

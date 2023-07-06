@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('address', 60);
             $table->string('vat_number', 11)->unique();
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });

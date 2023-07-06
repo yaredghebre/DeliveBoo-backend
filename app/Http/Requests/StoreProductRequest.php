@@ -29,7 +29,7 @@ class StoreProductRequest extends FormRequest
                 'min:4',
                 'max:50',
             ], 'image' => [
-                'required',
+                'nullable',
                 'min:4',
             ], 'price' => [
                 'required',
@@ -44,6 +44,7 @@ class StoreProductRequest extends FormRequest
             ],
             'category_id' => [
                 'required',
+                'exists:categories,id'
             ],
 
         ];
@@ -56,6 +57,7 @@ class StoreProductRequest extends FormRequest
             'name.min' => 'Lunghezza minima :min caratteri',
             'name.max' => 'Lunghezza massima :max caratteri',
             'category_id.required' => 'Campo obbligatorio',
+            'category_id.exists' => 'Campo obbligatorio',
             'price.required' => 'Campo obbligatorio ',
             'price.min' => 'Inserisci numero positivo',
             'image.required' => 'Campo obbligatorio',

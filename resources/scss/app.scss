@@ -21,10 +21,11 @@ nav{
         justify-content: center;
         align-items: center;
         height: 50px;
+        overflow: hidden;
         img{
             position: relative;
             width: 200px;
-            top:35%;
+            top:0;
         }
     }
 }
@@ -39,10 +40,24 @@ nav{
     background-size: cover;
 
     .ms_card{
-        background-color: rgba($color: #333333, $alpha: .5);
+        background-color: rgba($color: #333333, $alpha: .7);
         color: #ffffff;
         i{
             color: #fff;
+        }
+
+        .invalid-feedback{
+            color: #FFC107;
+            font-size: 18px;
+            font-weight: bold;
+
+            h6 {
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+        .is-invalid{
+            border-color: #FFC107;
         }
 
         .btn-link{
@@ -50,14 +65,16 @@ nav{
         }
 
         input{
-            background-color:rgba($color: #181818, $alpha: .5); ;
+            background-color:rgba($color: #181818, $alpha: .5); 
             border-color: black;
             color: #ffff;
             &:focus{
                 box-shadow: 0 0 0 0.25rem rgba($color: #FFC244, $alpha: 0.25);
                 
             }
+            
         }
+        
         .card-header{
             background-color: rgba($color: #333333, $alpha: .5);
             font-weight: bold;
