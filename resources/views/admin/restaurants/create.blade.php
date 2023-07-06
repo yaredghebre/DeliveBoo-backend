@@ -98,7 +98,7 @@
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-success">Salva</button>
+                        <button id="restaurant-form" type="submit" class="btn btn-success">Salva</button>
                     </div>
 
                 </form>
