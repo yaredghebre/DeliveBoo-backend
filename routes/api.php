@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\API\RestaurantController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('restaurants',[RestaurantController::class,'index']);
+Route::get('restaurants', [RestaurantController::class, 'index']);
+Route::get('generate/token', [PaymentController::class, 'generateToken']);
+Route::post('make/payment', [PaymentController::class, 'makePayment']);
