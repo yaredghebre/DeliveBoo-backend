@@ -8,11 +8,21 @@ use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
-    public function index(){
-        $restaurants=Restaurant::with(['products','types'])->paginate(10);
+    public function getRestaurant(Request $request)
+    {
+        $query = Restaurant::with(['types']);
+
+        if ($request->has('type_id')) {
+            $query->whereHas('types', function ($q) use ($request) {
+                $q->whereIn('id', [$request->type_id]);
+            });
+        }
+
+        $restaurants = $query->paginate(10);
+
         return response()->json([
-            'success'=>true,
-            'results'=>$restaurants
+            'success' => true,
+            'results' => $restaurants
         ]);
     }
 }
