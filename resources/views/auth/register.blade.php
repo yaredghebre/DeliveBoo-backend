@@ -23,7 +23,7 @@
 
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <h6>{{ $message }}</h6>
                                             </span>
                                         @enderror
                                     </div>
@@ -40,7 +40,7 @@
 
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <h6>{{ $message }}</h6>
                                             </span>
                                         @enderror
                                     </div>
@@ -56,7 +56,7 @@
 
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
+                                                <h6>{{ $message }}</h6>
                                             </span>
                                         @enderror
                                     </div>
@@ -72,7 +72,7 @@
                                             autocomplete="new-password">
 
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>Le due password devono combaciare</strong>
+                                            <h6>Le due password devono combaciare</h6>
                                         </span>
                                     </div>
 
