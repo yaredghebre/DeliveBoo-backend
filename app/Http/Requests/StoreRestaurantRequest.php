@@ -40,7 +40,7 @@ class StoreRestaurantRequest extends FormRequest
                 'size:11',
             ],
             'image' => [
-                'required',
+                'nullable',
                 'image'
             ],
             'description' => [

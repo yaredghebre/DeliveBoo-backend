@@ -29,7 +29,7 @@ class StoreProductRequest extends FormRequest
                 'min:4',
                 'max:50',
             ], 'image' => [
-                'required',
+                'nullable',
                 'min:4',
             ], 'price' => [
                 'required',

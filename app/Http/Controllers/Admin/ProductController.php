@@ -73,7 +73,7 @@ class ProductController extends Controller
         if($product->restaurant->id === Auth::user()->restaurant->id){
             return view('admin.products.show', compact('product'));
         }
-        return view('errors.404');
+        return view('errors.403');
     }
 
     /**
@@ -89,7 +89,7 @@ class ProductController extends Controller
 
             return view('admin.products.edit', compact('product', 'categories'));
         } else {
-            return view('errors.404');
+            return view('errors.403');
         }
     }
 
