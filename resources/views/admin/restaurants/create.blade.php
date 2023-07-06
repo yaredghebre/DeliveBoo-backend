@@ -76,7 +76,10 @@
                     </div>
 
                     <p>seleziona le categorie che più si addicono alla tua attività</p>
-                    <div class="mb-3 types-checkbox form-tags-container row ">
+                    <div class="mb-3 types-checkbox form-tags-container row">
+                        <span id="category-error" class="fs-6 d-none text-center mt-3 mb-3 text-danger">
+                            Seleziona una categoria
+                        </span>
 
                         @foreach ($types as $type)
                             <div class="form-check form-ceck-tag ">
