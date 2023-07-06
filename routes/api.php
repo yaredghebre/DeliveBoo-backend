@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('restaurants', [RestaurantController::class, 'getRestaurant']);
+Route::get('restaurants', [RestaurantController::class, 'getRestaurants']);
+Route::get('restaurants/products', [RestaurantController::class, 'getProducts']);
 Route::get('types', [TypesController::class, 'index']);
 Route::get('generate/token', [PaymentController::class, 'generateToken']);
 Route::post('make/payment', [PaymentController::class, 'makePayment']);
