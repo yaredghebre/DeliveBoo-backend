@@ -2,6 +2,7 @@
 
 @section('content')
 
+@include('partials.session-message')
 
 
     <div class="containter vh-100  restaurants">
@@ -25,6 +26,7 @@
                         @enderror
                         
                     </div>
+
                     <div class="mb-3">
                         <label for="restaurant_address" class="form-label">Indirizzo Attività</label>
                         <input type="text" minlength="5" maxlength="60"required class="form-control @error('address')is-invalid @enderror" id="restaurant_address" name="address" value="{{ old('address') }}">
@@ -34,6 +36,7 @@
                         </div>
                     @enderror
                     </div>
+
                     <div class="mb-3">
                         <label for="restaurant_vat_number" class="form-label">P.IVA</label>
                         <input type="text"  minlength="11" maxlength="11" required class="form-control @error('vat_number')is-invalid @enderror" id="restaurant_vat_number" name="vat_number" value="{{ old('vat_number') }}">
@@ -43,18 +46,23 @@
                             </div>
                         @enderror
                     </div>
+
                     <div class="mb-3">
-                        <label class="form-label" for="restaurant_img">
+                        <label class="form-label" for="image-input">
                             Seleziona un immagine di copertina per la tua
                             attività
                         </label>
-                        <input type="file" required class="form-control   @error('image')is-invalid @enderror" id="restaurant_img" name="image" value="{{ old('image') }}">
+                        <input type="file" required class="form-control   @error('image')is-invalid @enderror" id="image-input" name="image" value="{{ old('file') }}">
+                        <div>
+                            <img class="d-none w-25" id="image-preview" src="" alt="">
+                        </div>
                         @error('image')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
+
                     <div class="mb-3">
                         <p>Aggiungi una descrizione della tua attività</p>
                         <div class="form-floating">
