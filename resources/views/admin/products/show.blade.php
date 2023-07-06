@@ -12,9 +12,7 @@
                     @if ($product->image)
                         <img width="300" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
                     @else
-                        <div class="p-5 bg-secondary text-white w-50 text-center">
-                            <span> Image not available </span>
-                        </div>
+                    <img width="300" src="{{ asset('img/logo.png') }}" alt="Deliveboo">
                     @endif
                 </div>
 
