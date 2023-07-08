@@ -14,8 +14,12 @@
                 </div>
             @else
                 <div class="card">
-
-                    <img src="{{ asset('storage/' . $restaurant->image) }}" class="card-img-top w-50" alt="Restaurant Image">
+                    @if ($restaurant->image)
+                        <img src="{{ asset('storage/' . $restaurant->image) }}" class="card-img-top w-50"
+                            alt="Restaurant Image">
+                    @else
+                        <img src="{{ asset('img/logo.png') }}"" class="card-img-top w-50" alt="Restaurant Image">
+                    @endif
                     <div class="card-body">
                         <h5 class="card-title">{{ $restaurant->name }}</h5>
                         <p class="card-text">Indirizzo: {{ $restaurant->address }}</p>
