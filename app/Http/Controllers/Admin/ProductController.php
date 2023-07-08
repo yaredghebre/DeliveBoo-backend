@@ -70,10 +70,12 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        if($product->restaurant->id === Auth::user()->restaurant->id){
+        if ($product->restaurant->id === Auth::user()->restaurant->id) {
             return view('admin.products.show', compact('product'));
+        } else {
+
+            return view('errors.403');
         }
-        return view('errors.403');
     }
 
     /**
@@ -102,26 +104,36 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        $data = $request->validated();
-        // $data['image'] = null;
+        if ($product->restaurant->user?->id === Auth::user()->id) {
 
-        if ($request->hasFile('image')) {
+            $data = $request->validated();
+            // $data['image'] = null;
 
-            Storage::delete($product->image);
+            if ($request->hasFile('image')) {
 
-            $path = Storage::disk('public')->put('image', $request->image);
-            $data['image'] = $path;
+                Storage::delete($product->image);
+
+                $path = Storage::disk('public')->put('image', $request->image);
+                $data['image'] = $path;
+            }
+
+            $product->update($data);
+            return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato modificato con successo");
+        } else {
+            return view('errors.403');
         }
-
-        $product->update($data);
-        return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato modificato con successo");
     }
 
     public function toggleVisible(Request $request, Product $product)
     {
-        $data = $request->all();
-        $product->update($data);
-        return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato modificato con successo");
+        if ($product->restaurant->user?->id === Auth::user()->id) {
+
+            $data = $request->all();
+            $product->update($data);
+            return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato modificato con successo");
+        } else {
+            return view('errors.403');
+        }
     }
 
     /**
@@ -132,11 +144,15 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if ($product->restaurant->user?->id === Auth::user()->id) {
 
-        if ($product->image) {
-            Storage::delete($product->image);
+            if ($product->image) {
+                Storage::delete($product->image);
+            }
+            $product->delete();
+            return redirect()->route('admin.products.index')->with('message', "{$product->name} è sato cancellato");
+        } else {
+            return view('errors.403');
         }
-        $product->delete();
-        return redirect()->route('admin.products.index')->with('message', "{$product->name} è sato cancellato");
     }
 }

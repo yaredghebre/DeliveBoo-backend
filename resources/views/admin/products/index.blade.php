@@ -6,7 +6,7 @@
 
     @if ($errors->any())
         @foreach ($errors->all() as $item)
-            {{$item}}
+            {{ $item }}
         @endforeach
     @endif
 
@@ -21,7 +21,7 @@
                         @if ($item->image)
                             <img width="300" src="{{ asset('storage/' . $item->image) }}" alt="DeliveBoo">
                         @else
-                        <img width="300" src="{{ asset('img/logo.png') }}" alt="Deliveboo">
+                            <img width="300" src="{{ asset('img/logo.png') }}" alt="Deliveboo">
                         @endif
                     </div>
                     <div class="card-body">
@@ -56,7 +56,8 @@
                         <form action="{{ route('admin.products.destroy', $item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-delete" data-product-name="{{ $item->name }}"> 
+                            <button type="submit" class="btn btn-danger btn-delete"
+                                data-product-name="{{ $item->name }}">
                                 <i class="fa-solid fa-trash" tyle="color: #ffffff;"></i>
                             </button>
                         </form>
