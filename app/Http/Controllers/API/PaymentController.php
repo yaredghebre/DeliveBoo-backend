@@ -31,15 +31,16 @@ class PaymentController extends Controller
         if ($result->success) {
             $data = [
                 'message' => 'Transazione Approvata',
-                'success' => true
+                'success' => true,
             ];
-            return response()->json($data, 200);
+            $confNumb = 200;
         } else {
             $data = [
                 'message' => 'Transazione Rifiutata',
                 'success' => false
             ];
-            return response()->json($data, 401);
+            $confNumb = 401;
         }
+        return response()->json($data, $confNumb);
     }
 }
