@@ -26,20 +26,29 @@ class RestaurantController extends Controller
             'results' => $restaurants
         ]);
     }
+
+    //Route for single restaurant
     public function getRestaurant(Request $request)
     {
 
         if ($request->has('restaurant_id')) {
             $query = Restaurant::where('id', $request->restaurant_id);
-        }
+            $success = true;
+            $restaurants = $query->first();
+        } else {
+            $success = false;
+            $restaurants = 'Not Found';
+        };
 
-        $restaurants = $query->first();
 
         return response()->json([
-            'success' => true,
+            'success' => $success,
             'results' => $restaurants
         ]);
     }
+
+    //Route for products request
+    //TO DO: create a specific controller
     public function getProducts(Request $request)
     {
         if ($request->has('restaurant_id')) {
