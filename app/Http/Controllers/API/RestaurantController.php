@@ -30,12 +30,17 @@ class RestaurantController extends Controller
     //Route for single restaurant
     public function getRestaurant(Request $request)
     {
+        $success = false;
 
         if ($request->has('restaurant_id')) {
             $query = Restaurant::where('id', $request->restaurant_id);
             $success = true;
-            $restaurants = $query->first();
-        } else {
+        } else if ($request->has('restaurant_name')) {
+            $query = Restaurant::where('name', 'like', '%' . $request->restaurant_name . '%');
+            $success = true;
+        }
+        $restaurants = $query->get();
+        if (!$success) {
             $success = false;
             $restaurants = 'Not Found';
         };
