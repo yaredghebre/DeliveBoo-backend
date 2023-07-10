@@ -26,6 +26,20 @@ class RestaurantController extends Controller
             'results' => $restaurants
         ]);
     }
+    public function getRestaurant(Request $request)
+    {
+
+        if ($request->has('restaurant_id')) {
+            $query = Restaurant::where('id', $request->restaurant_id);
+        }
+
+        $restaurants = $query->first();
+
+        return response()->json([
+            'success' => true,
+            'results' => $restaurants
+        ]);
+    }
     public function getProducts(Request $request)
     {
         if ($request->has('restaurant_id')) {

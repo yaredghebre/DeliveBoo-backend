@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 // Route front-end data
 Route::get('restaurants', [RestaurantController::class, 'getRestaurants']);
+Route::get('restaurant', [RestaurantController::class, 'getRestaurant']);
 Route::get('restaurants/products', [RestaurantController::class, 'getProducts']);
 Route::get('types', [TypesController::class, 'index']);
 
