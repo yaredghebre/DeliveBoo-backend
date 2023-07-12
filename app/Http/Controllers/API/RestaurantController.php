@@ -35,8 +35,13 @@ class RestaurantController extends Controller
         if ($request->has('restaurant_id')) {
             $query = Restaurant::where('id', $request->restaurant_id);
             $success = true;
-        } else if ($request->has('restaurant_name')) {
+        }
+        if ($request->has('restaurant_name')) {
             $query = Restaurant::where('name', 'like', '%' . $request->restaurant_name . '%');
+            $success = true;
+        }
+        if ($request->random === 'true') {
+            $query = Restaurant::inRandomOrder()->limit(6);
             $success = true;
         }
         $restaurants = $query->get();
