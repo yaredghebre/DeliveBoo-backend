@@ -10,20 +10,21 @@
         @endforeach
     @endif
 
-
-    <div class="container-fluid w-75 mt-5 pb-5 ms_index-products">
+<div class="ms_wrapper">
+    
+    <div class="container mt-5 pb-5 ms_index-products">
         <h1 class="my-3">I prodotti di "{{ Auth::user()->restaurant->name }}" </h1>
-        <div class="row row-cols-5 row-cols-sm-1 row-cols-md-3 row-cols-lg-5">
+        <div class="row">
             @foreach ($products as $item)
-                <div class="col col-5">
-                    <div class="card">
+                <div class="ms_col">
+                    <div class="ms_card">
 
-                        <div class="card-top">
+                        <div class="ms_card-top">
                             <a href="{{ route('admin.products.show', $item->id) }}"
-                                class="ms_card-img-box {{ $item->visible ? 'sepia' : '' }}"
+                                class="ms_card-img-box {{ $item->visible ? '' : 'sepia' }}"
                                 data-visible="{{ $item->visible ? '1' : '0' }}"
                                 data-image="{{ asset('storage/' . $item->image) }}">
-    
+
                                 @if ($item->image)
                                     <img src="{{ asset('storage/' . $item->image) }}" alt="DeliveBoo">
                                 @else
@@ -32,21 +33,25 @@
                             </a>
                         </div>
 
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $item->name }}</h5>
+                        <div class="ms_card-body">
+                            <h5 class="card-title text-center">{{ $item->name }}</h5>
 
-                            @if ($item->category)
-                                <p class="card-text">{{ $item->category->name }}</p>
-                            @else
-                                <p>Nessuna categoria</p>
-                            @endif
+                            <div class="ms_card-details d-flex gap-2">
+
+                                @if ($item->category)
+                                    <p class="card-text">{{ $item->category->name }}</p>
+                                @else
+                                    <p>Nessuna categoria</p>
+                                @endif
+
+                                <p class="card-text">€{{ $item->price }}</p>
+                            </div>
 
                             @if ($item->description)
                                 <p class="card-text">{{ $item->description }}</p>
                             @else
                                 <p>Nessuna descrizione</p>
                             @endif
-                            <p class="card-text">€ {{ $item->price }}</p>
 
                             <div class="d-flex justify-content-center gap-2">
                                 <form action="{{ route('admin.product.visible', $item->id) }}" method="POST"
@@ -55,14 +60,14 @@
                                     @method('GET')
                                     <input type="hidden" name="visible" value="{{ $item->visible ? '0' : '1' }}">
                                     @if ($item->visible === 1)
-                                        <button type="submit" class="btn btn-secondary btn-show">
+                                        <button type="submit" class="btn btn-secondary btn-hide">
                                             <i class="fa-solid fa-eye-slash" style="color: #ffffff;"></i>
-                                            <div class="show">Mostra</div>
+                                            <div class="hide">Nascondi</div>
                                         </button>
                                     @else
-                                        <button type="submit" class="btn btn-success btn-hide">
+                                        <button type="submit" class="btn btn-success btn-show">
                                             <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
-                                            <div class="hide">Nascondi</div>
+                                            <div class="show">Mostra</div>
                                         </button>
                                     @endif
                                 </form>
@@ -80,11 +85,6 @@
                                     </button>
                                 </form>
 
-
-                                {{-- <a href="{{ route('admin.products.show', $item->id) }}" class="btn btn-info">
-                                    <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
-                                </a> --}}
-
                             </div>
 
                         </div>
@@ -97,4 +97,5 @@
         <a href="{{ route('admin.products.create') }}" class="btn btn-warning mt-3">Aggiungi un prodotto +</a>
 
     </div>
+</div>
 @endsection
