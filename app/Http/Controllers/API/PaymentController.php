@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
 use Braintree\Gateway;
+use DateTime;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -53,6 +54,8 @@ class PaymentController extends Controller
 
         if ($result->success) {
             $data['status'] = 1;
+            $data['total'] = $total;
+            $data['date_time'] = new DateTime();
             $orderMessage = 'I dati non sono stati salvati';
             $message = 'Il pagamento è stato effettuato';
             $sucess = true;
@@ -60,10 +63,11 @@ class PaymentController extends Controller
             //
             //devo creare un ordine
             $order = new Order();
-            $data['total'] = $total;
             $order->fill($data);
             $order->save();
 
+
+            //tabella pivo order_product
             foreach ($cart as $item) {
                 $order_product = new OrderProduct();
                 $order_product->order_id = $order->id;
