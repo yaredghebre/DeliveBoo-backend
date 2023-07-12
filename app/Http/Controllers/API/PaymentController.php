@@ -52,6 +52,7 @@ class PaymentController extends Controller
 
 
         if ($result->success) {
+            $data['status'] = 1;
             $orderMessage = 'I dati non sono stati salvati';
             $message = 'Il pagamento è stato effettuato';
             $sucess = true;
