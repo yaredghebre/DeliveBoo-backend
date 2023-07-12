@@ -74,3 +74,17 @@ for (let i = 0; i < checks.length; i++) {
     
   });
 }
+
+// Function for click on visibility
+document.addEventListener('DOMContentLoaded', function() {
+    const imgBoxes = document.querySelectorAll('.ms_card-img-box');
+    imgBoxes.forEach(function(box) {
+      box.addEventListener('click', function() {
+        const visible = box.getAttribute('data-visible');
+        const image = box.getAttribute('data-image');
+        box.classList.toggle('sepia');
+        box.setAttribute('data-visible', visible === '1' ? '0' : '1');
+        box.style.backgroundImage = `url(${image})`;
+      });
+    });
+  });

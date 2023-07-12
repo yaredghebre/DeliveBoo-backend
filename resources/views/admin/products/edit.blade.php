@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="ms_wrapper">
     <div class="container w-50">
         @include('partials.session-message')
         @if ($errors->any())
@@ -78,4 +79,5 @@
         <a href="{{ route('admin.products.index') }}" class="btn btn-warning mt-3">Torna ai prodotti</a>
 
     </div>
+</div>
 @endsection
