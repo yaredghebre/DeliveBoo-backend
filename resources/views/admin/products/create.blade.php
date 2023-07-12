@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+
+<div class="ms_wrapper">
     <div class="container w-50">
         @include('partials.session-message')
 
@@ -79,4 +81,5 @@
 
         </form>
     </div>
+</div>
 @endsection
