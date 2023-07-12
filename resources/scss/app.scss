@@ -1,52 +1,57 @@
 @import '~bootstrap/scss/bootstrap';
 
-img{
+img {
     max-width: 100%;
 }
-body{
+
+body {
     font-family: 'Roboto', sans-serif;
 }
 
-main{
+main {
     height: calc(100vh - 76px);
-    
+
 }
 
 //app.blade
-nav{
-    
+nav {
+
     background-color: #FFC244;
-    .logo_deliveboo{
+
+    .logo_deliveboo {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 50px;
         overflow: hidden;
-        img{
+
+        img {
             position: relative;
             width: 200px;
-            top:0;
+            top: 0;
         }
     }
 }
+
 //Login & register "/" page
 
 .login,
-.register{
+.register {
     overflow-y: auto;
     height: 100%;
     padding: 2rem 0;
     background-image: url('https://www.eatingwell.com/thmb/m5xUzIOmhWSoXZnY-oZcO9SdArQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/article_291139_the-top-10-healthiest-foods-for-kids_-02-4b745e57928c4786a61b47d8ba920058.jpg');
     background-size: cover;
 
-    .ms_card{
+    .ms_card {
         background-color: rgba($color: #333333, $alpha: .7);
         color: #ffffff;
-        i{
+
+        i {
             color: #fff;
         }
 
-        .invalid-feedback{
+        .invalid-feedback {
             color: #FFC107;
             font-size: 18px;
             font-weight: bold;
@@ -56,66 +61,73 @@ nav{
                 font-weight: bold;
             }
         }
-        .is-invalid{
+
+        .is-invalid {
             border-color: #FFC107;
         }
 
-        .btn-link{
-            color:#FFC244;
+        .btn-link {
+            color: #FFC244;
         }
 
-        input{
-            background-color:rgba($color: #181818, $alpha: .5); 
+        input {
+            background-color: rgba($color: #181818, $alpha: .5);
             border-color: black;
             color: #ffff;
-            &:focus{
+
+            &:focus {
                 box-shadow: 0 0 0 0.25rem rgba($color: #FFC244, $alpha: 0.25);
-                
+
             }
-            
+
         }
-        
-        .card-header{
+
+        .card-header {
             background-color: rgba($color: #333333, $alpha: .5);
             font-weight: bold;
         }
     }
 
 }
+
 //CREATE RESTAURANT .BLADE
-.restaurants{
+.restaurants {
+
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+        -webkit-appearance: none;
+        margin: 0;
     }
 
-    .form-tags-container{
+    .form-tags-container {
         flex-wrap: wrap;
         justify-content: center;
-    
-        
-        .form-ceck-tag{
+
+
+        .form-ceck-tag {
             position: relative;
             width: 80px;
             height: 30px;
             padding: 0;
-            
+
             margin-right: 5px;
             z-index: 2;
-            .form-check-input:focus{
+
+            .form-check-input:focus {
                 box-shadow: none;
             }
-            .form-check-input:checked[type=checkbox]{
+
+            .form-check-input:checked[type=checkbox] {
                 background-image: none;
-                border-color:black;
-                background-color: rgba(255, 165, 47 , 1);
+                border-color: black;
+                background-color: rgba(255, 165, 47, 1);
             }
-            .form-check-input{
+
+            .form-check-input {
                 background-color: rgba(255, 165, 47, 0.708);
             }
-           
-            .absolute{
+
+            .absolute {
                 position: absolute;
                 left: 50%;
                 top: 50%;
@@ -123,18 +135,238 @@ nav{
                 font-weight: bold;
                 font-size: .7rem;
                 z-index: 1;
-               
+
             }
-            .ms_form-check{
+
+            .ms_form-check {
                 width: 80px;
                 height: 30px;
                 padding: 0;
                 margin: 0;
             }
         }
-        .checkbox-error{
+
+        .checkbox-error {
             color: var(--bs-form-invalid-color);
             font-size: 0.875em;
         }
+    }
+}
+
+// DASHBOARD 
+.wrapper {
+    position: relative;
+    height: calc(100vh - 70px);
+    font-family: 'Roboto', sans-serif;
+    background-size: cover;
+    padding: 20px 0;
+
+    .background-img {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        object-fit: cover;
+        height: 100%;
+        z-index: -1;
+    }
+
+    .container {
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            min-height: 400px;
+            max-height: 800px;
+            padding: 0;
+            border-radius: 20px;
+            overflow: hidden;
+
+            .card-img {
+                height: 50%;
+                width: 100%;
+
+                img {
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .card-body {
+                height: 50%;
+                width: 100%;
+
+
+                .restaurant-detail-card-container {
+                    position: relative;
+                    min-height: 110px;
+                    // z-index: 1;
+
+                    .restaurant-detail-card {
+                        position: absolute;
+                        padding: 1rem 2rem;
+                        top: -50px;
+                        border-radius: 20px;
+                        box-shadow: 0px 10px 15px rgb(166, 166, 166);
+                        background-color: white;
+                        left: 0;
+                        right: 50%;
+
+
+                        h2 {
+                            margin: 0;
+                            font-weight: 700;
+                            font-size: 3rem;
+                        }
+
+                        p {
+                            margin: 0;
+                            font-size: .8rem;
+                            color: #797979;
+                        }
+
+                        p.description {
+                            font-size: .9rem;
+                            text-align: left;
+                            color: black;
+                        }
+                    }
+                }
+
+                .restaurant-actions {
+
+                    .ms_button-green {
+                        background-color: #27A182;
+                        color: white;
+                    }
+
+                    .ms_button-yellow {
+                        background-color: #FFC245;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+
+// PRODUCT PAGES (INDEX)
+.ms_wrapper {
+    background-color: #27a18236;
+    height: calc(100vh - 70px);
+    padding: 20px 0;
+    height: 2000px;
+
+    .row {
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .ms_col {
+            width: 400px;
+            height: 400px;
+            padding: 10px;
+
+            .ms_card {
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+                background-color: white;
+                overflow: auto;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+
+                .ms_card-top {
+                    height: 55%;
+                    overflow: hidden;
+
+                    .ms_card-img-box {
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            transition: 0.3s ease-in-out;
+
+                            &:hover {
+                                transform: scale(1.09);
+                            }
+                        }
+                    }
+
+                    .ms_card-img-box.sepia {
+                        filter: grayscale(100%);
+                    }
+                }
+
+                .ms_card-body {
+                    height: 45%;
+                    padding: 0.5rem 0.5rem;
+
+                    .disp-visible {
+
+                        .btn-hide {
+                            position: relative;
+                        }
+
+                        .btn-show {
+                            position: relative;
+                        }
+
+                        .show,
+                        .hide {
+                            position: absolute;
+                            top: -70%;
+                            left: -20%;
+                            padding: 5px;
+                            background-color: #fff;
+                            border: 1px solid black;
+                            border-radius: 3px;
+                            color: black;
+                            display: none;
+                            opacity: 0.75;
+                        }
+
+                        .btn-show:hover .show {
+                            display: block;
+
+                        }
+
+                        .btn-hide:hover .hide {
+                            display: block;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+// SINGLE PRODUCT PAGE (SHOW)
+
+.ms_show-card {
+    width: 100%;
+    // height: 800px;
+    border-radius: 10px;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+
+    &-top {
+        max-height: 60%;
+        overflow: hidden;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &-body {
+        height: 40%;
+        padding: 1rem 1rem;
     }
 }

@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PaymentRequest;
+use App\Models\Order;
+use App\Models\OrderProduct;
+use App\Models\Product;
 use Braintree\Gateway;
+use DateTime;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -19,27 +23,73 @@ class PaymentController extends Controller
         return response()->json($data, 200);
     }
 
+
+
     public function makePayment(PaymentRequest $request, Gateway $gateway)
     {
+
+        $orderMessage = '';
+        $message = '';
+        $sucess = false;
+        $data = $request->all();
+        $total = 0;
+
+        $cart = $data['cart'];
+        //calcolare il totale dell'ordine
+        foreach ($cart as $item) {
+            $product = Product::where('id', $item['id'])->first();
+            $total += $product->price * $item['quantity'];
+        }
+
+
         $result = $gateway->transaction()->sale([
-            'amount' => $request->amount,
+            'amount' => $total,
             'paymentMethodNonce' => $request->token,
             'options' => [
                 'submitForSettlement' => true
             ],
         ]);
+
+
+
         if ($result->success) {
-            $data = [
-                'message' => 'Transazione Approvata',
-                'success' => true
-            ];
-            return response()->json($data, 200);
+            $data['status'] = 1;
+            $data['total'] = $total;
+            $data['date_time'] = new DateTime();
+            $orderMessage = 'I dati non sono stati salvati';
+            $message = 'Il pagamento è stato effettuato';
+            $sucess = true;
+            $confNumb = 200;
+            //
+            //devo creare un ordine
+            $order = new Order();
+            $order->fill($data);
+            $order->save();
+
+
+            //tabella pivo order_product
+            foreach ($cart as $item) {
+                $order_product = new OrderProduct();
+                $order_product->order_id = $order->id;
+                $order_product->product_id = $item['id'];
+                $order_product->product_quantity = $item['quantity'];
+                $order_product->save();
+            }
+            if ($order && $order_product) {
+                $orderMessage = 'I dati sono stati salvati';
+            }
         } else {
-            $data = [
-                'message' => 'Transazione Rifiutata',
-                'success' => false
-            ];
-            return response()->json($data, 401);
+            $message = 'La transazione è stata rifiutata';
+            $sucess = false;
+            $confNumb = 401;
         }
+
+        $data = [
+            'message' => $message,
+            'success' => $sucess,
+            'data_confirmation' => $orderMessage
+        ];
+
+        return response()->json($data, $confNumb);
     }
 }

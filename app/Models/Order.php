@@ -10,7 +10,18 @@ class Order extends Model
     use HasFactory;
 
     // N to N -> orders
-    public function products() {
+    public function products()
+    {
         return $this->belongsToMany(Product::class);
     }
+
+    protected $fillable = [
+        'total',
+        'status',
+        'date_time',
+        'customer_name_surname',
+        'customer_address',
+        'customer_notes',
+        'customer_email'
+    ];
 }

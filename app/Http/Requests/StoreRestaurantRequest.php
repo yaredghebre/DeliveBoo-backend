@@ -38,7 +38,8 @@ class StoreRestaurantRequest extends FormRequest
                 'required',
                 'numeric',
                 'unique:restaurants',
-                'size:11',
+                'min_digits:11',
+                'max_digits:11'
             ],
             'image' => [
                 'nullable',
@@ -53,7 +54,7 @@ class StoreRestaurantRequest extends FormRequest
                 'nullable',
                 'exists:users,id'
             ],
-            'types' =>[
+            'types' => [
                 'required',
                 'exists:types,id'
             ],
@@ -72,8 +73,9 @@ class StoreRestaurantRequest extends FormRequest
             'address.max' => 'Lunghezza massima :max caratteri',
             'vat_number.required' => 'Campo obbligatorio',
             'vat_number.unique' => 'Già esistente',
-            'vat_number.numeric'=>'inserisci solo numeri',
-            'vat_number.size' => 'Verifica che siano :size caratteri',
+            'vat_number.numeric' => 'inserisci solo numeri',
+            'vat_number.min_digits' => 'Verifica che siano :min numeri',
+            'vat_number.max_digits' => 'Verifica che siano :max numeri',
             'image.required' => 'Campo obbligatorio',
             'image.image' => 'Verifica che il file sia un immagine',
             'description.min' => 'Lunghezza minima :min caratteri',
