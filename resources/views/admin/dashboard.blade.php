@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+@include('partials.session-message')
+@include('partials.modal-delete')
     <img class="background-img" src="{{ asset('img/Background-cover.png') }}" alt="">
     @if (!$restaurant)
     <div class="wrapper">
@@ -106,24 +108,114 @@
                             <hr>
                         @endif
                     </div>
+                    
+                       
+                    
+                    <section class="products">
+                        <h5 class="text-center">Prodotti</h5>
+                        <div class="restaurant-actions  ">
+                            <div class="actions">        
+                                <a href="{{ route('admin.products.create') }}" class="btn ms_button-green">Aggiungi Prodotto</a>
+                            </div>
+                            <div class="products-showcase">
+                                <div class="container">
+                                    <div class="row">
+                                        {{-- foreach for products cards --}}
+                                        @foreach ($products as $item)
+                                        <div class="ms_col">
+                                            
 
-                    <div class="restaurant-actions  d-flex ">
-                        <div class="actions">
-                            @if ($restaurant->products->isEmpty())
-                                <a href="{{ route('admin.products.create') }}" class="btn btn-success me-1">Aggiungi
-                                    prodotti</a>
-                            @else
-                                <a href="{{ route('admin.products.index') }}" class="btn ms_button-yellow me-1">Visualizza
-                                    prodotti</a>
-                                <a href="{{ route('admin.products.create') }}" class="btn ms_button-green me-1">Aggiungi
-                                    prodotti +</a>
-                            @endif
+                                                <div class="ms_card-top">
+                                                    <a href="{{ route('admin.products.show', $item->id) }}"
+                                                        class="ms_card-img-box {{ $item->visible ? '' : 'sepia' }}"
+                                                        data-visible="{{ $item->visible ? '1' : '0' }}"
+                                                        data-image="{{ asset('storage/' . $item->image) }}">
 
+                                                        @if ($item->image)
+                                                            <img src="{{ asset('storage/' . $item->image) }}" alt="DeliveBoo">
+                                                        @else
+                                                            <img src="{{ asset('img/logo.png') }}" alt="Deliveboo">
+                                                        @endif
+                                                    </a>
+                                                </div>
+
+                                                <div class="ms_card-body">
+                                                    <div class="product-card-title">
+                                                        <h5 class="card-title text-center">{{ $item->name }}</h5>
+                                                    </div>
+
+                                                    <div class="ms_card-details d-flex justify-content-between ">
+
+                                                        @if ($item->category)
+                                                            <p class="card-text">categoria: {{ $item->category->name }}</p>
+                                                        @else
+                                                            <p>Nessuna categoria</p>
+                                                        @endif
+
+                                                        <p class="card-text">prezzo: €{{ $item->price }}</p>
+                                                    </div>
+
+                                                    <div class="description">
+                                                        @if ($item->description)
+                                                        <h6 >descrizione</h6>
+                                                            <p class="card-text">
+                                                                @if (strlen($item->description) > 45)
+                                                                    {{ substr($item->description, 0, 45) }}...
+                                                                @else
+                                                                    {{ $item->description }}
+                                                                @endif
+                                                            </p>
+                                                        @else
+                                                            <p>Nessuna descrizione</p>
+                                                        @endif
+                                                    </div>
+
+                                                    <div class="buttons">
+                                                        <form action="{{ route('admin.product.visible', $item->id) }}" method="POST"
+                                                            class="disp-visible button">
+                                                            @csrf
+                                                            @method('GET')
+                                                            <input type="hidden" name="visible" value="{{ $item->visible ? '0' : '1' }}">
+                                                            @if ($item->visible === 1)
+                                                                <button type="submit" class="btn btn-secondary btn-hide">
+                                                                    <i class="fa-solid fa-eye-slash" style="color: #ffffff;"></i>
+                                                                    <div class="hide">Nascondi</div>
+                                                                </button>
+                                                            @else
+                                                                <button type="submit" class="btn btn-success btn-show">
+                                                                    <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
+                                                                    <div>Mostra</div>
+                                                                </button>
+                                                            @endif
+                                                        </form>
+                                                        <div class="button">
+                                                            <a href="{{ route('admin.products.edit', $item->id) }}" class="btn btn-primary">
+                                                                <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+                                                                <div>Modifica</div>
+                                                            </a>
+                                                        </div>
+
+                                                        <form action="{{ route('admin.products.destroy', $item->id) }}" method="POST" class="button">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-delete"
+                                                                data-product-name="{{ $item->name }}">
+                                                                <i class="fa-solid fa-trash" tyle="color: #ffffff;"></i>
+                                                                <div>Elimina</div>
+                                                            </button>
+                                                        </form>
+
+                                                    </div>
+
+                                                </div>
+                                            
+                                        </div>
+                                    @endforeach
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="products-showcase">
-
-                        </div>
-                    </div>
+                    </section>
                 </div>
             </div>
             @endif

@@ -76,7 +76,7 @@
 
             <button class="btn btn-success mt-3" type="submit">Salva prodotto</button>
 
-            <a href="{{ route('admin.products.index') }}" class="btn btn-primary mt-3">Torna ai prodotti</a>
+            <a href="{{ route('admin.dashboard') }}" class="btn btn-primary mt-3">Torna ai prodotti</a>
 
 
         </form>

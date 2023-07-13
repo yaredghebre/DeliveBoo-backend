@@ -242,7 +242,7 @@ nav {
     position: relative;
     height: calc(100vh - 80px);
     font-family: 'Roboto', sans-serif;
-    overflow: auto;
+    overflow-y: auto;
     
     
 
@@ -335,15 +335,16 @@ nav {
     //with the restaurant--------------------------------------------------------
     .restaurant{
         height: calc(100vh - 80px);
-
+        overflow-y: auto;
         .card {
             display: flex;
             flex-direction: column;
-            height: 100%;
+            
             padding: 0;
             padding-bottom: 2rem;
             box-shadow: 0px 0px 10px grey;
-            overflow: auto;
+            
+            
         
             .card-img {
                 height: 250px;
@@ -351,6 +352,8 @@ nav {
                 overflow: hidden;
         
                 img {
+                    height: 100%;
+                    width: 100%;
                     object-fit: cover;
                     object-position: center;
                 }
@@ -411,18 +414,117 @@ nav {
 }
 
 //---------------product section-----------------------------------------------------------------
-                .restaurant-actions {
-                    border: 1px solid black;
-                    height: 300px;
-                    .ms_button-green {
-                        background-color: #27A182;
-                        color: white;
+                
+                    .products{
+                        background-color: #FFC244;
+                        border-radius: 10px;
+                        box-shadow: 0px 0px 10px grey;
+                        padding-top: .5rem;
+                        height: 400px;
+                        .restaurant-actions {
+                            border-top: 1px solid rgb(151, 151, 151);
+                            height: calc(100% - 50px);
+                            background-color: #e4e4e4;
+                        }
+                        .actions{
+                            border-bottom: 1px solid rgb(155, 155, 155);
+                            text-align: center;
+                            padding: .5rem;
+                            box-shadow: 0px 5px 10px rgb(172, 172, 172);
+                            position: relative;
+                            z-index: 2;
+                            .btn{
+                                font-size: .7rem;
+                                display: inline-block;
+                                margin: 0 auto;
+                            }
+                            .ms_button-green {
+                                background-color: #27A182;
+                                color: white;
+                            }
+                        }
+                        .products-showcase{
+                            background-color: #ffff;
+                            height: calc(100% - 48px);
+                            
+                            .container{
+                                
+                                height: 100%;
+                                overflow: auto;
+                                .row{
+                                    
+                                    padding: 1rem 0;
+                                    justify-content: center;
+                                    .ms_col{
+                                        
+                                        height: 280px;
+                                        padding: .5rem .25rem;
+                                        padding-top: 0 ;
+                                        width: 350px;
+                                        
+                                        .ms_card-top{
+                                            height: 100px;
+                                            border-top-left-radius: 10px;
+                                            border-top-right-radius: 10px;
+                                            overflow: hidden;
+                                            box-shadow: 0px -3px 20px rgb(155, 155, 155);
+                                            img{
+                                                height: 100%;
+                                                width: 100%;
+                                                object-fit: cover;
+                                            }
+                                        }
+                                        .ms_card-body{
+                                            height: 180px;
+                                            position: relative;
+                                            padding: 0 .5rem;
+                                            padding-top: 1rem;
+                                            box-shadow: 0px 5px 15px rgb(109, 109, 109);
+                                            border-bottom-left-radius:10px ;
+                                            border-bottom-right-radius:10px;
+                                            
+                                            .product-card-title{
+                                                position: absolute;
+                                                padding: .3rem .5rem;
+                                                background-color: #ffff;
+                                                top: -34px;
+                                                border: 1px solid rgb(109, 109, 109);
+                                                box-shadow: 0px 5px 10px rgb(109, 109, 109);
+                                                left: 50%;
+                                                width: 80%;
+                                                transform: translateX(-50%);
+                                                border-radius: 10px;
+                                                z-index: 2;
+                                            }
+                                            .description{
+                                                margin-top: -10px;
+                                            }
+                                        }
+                                        .buttons{
+                                            height: 50px;
+                                            display: flex;
+                                            justify-content: space-evenly;
+                                            .button{
+                                                width: 100px;  
+                                                div{
+                                                    margin-top: -5px;
+                                                }
+                                                
+                                                .btn{
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    font-size: 15px;
+                                                  
+                                                }
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        }
                     }
-
-                    .ms_button-yellow {
-                        background-color: #FFC245;
-                    }
-                }
+                
             }
 
         }
@@ -431,94 +533,6 @@ nav {
 
 
 // PRODUCT PAGES (INDEX)
-.ms_wrapper {
-    background-color: #27a18236;
-    height: calc(100vh - 70px);
-    padding: 20px 0;
-    height: 2000px;
-
-    .row {
-        flex-wrap: wrap;
-        justify-content: center;
-
-        .ms_col {
-            width: 400px;
-            height: 400px;
-            padding: 10px;
-
-            .ms_card {
-                width: 100%;
-                height: 100%;
-                border-radius: 10px;
-                background-color: white;
-                overflow: auto;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-
-                .ms_card-top {
-                    height: 55%;
-                    overflow: hidden;
-
-                    .ms_card-img-box {
-                        img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
-                            transition: 0.3s ease-in-out;
-
-                            &:hover {
-                                transform: scale(1.09);
-                            }
-                        }
-                    }
-
-                    .ms_card-img-box.sepia {
-                        filter: grayscale(100%);
-                    }
-                }
-
-                .ms_card-body {
-                    height: 45%;
-                    padding: 0.5rem 0.5rem;
-
-                    .disp-visible {
-
-                        .btn-hide {
-                            position: relative;
-                        }
-
-                        .btn-show {
-                            position: relative;
-                        }
-
-                        .show,
-                        .hide {
-                            position: absolute;
-                            top: -70%;
-                            left: -20%;
-                            padding: 5px;
-                            background-color: #fff;
-                            border: 1px solid black;
-                            border-radius: 3px;
-                            color: black;
-                            display: none;
-                            opacity: 0.75;
-                        }
-
-                        .btn-show:hover .show {
-                            display: block;
-
-                        }
-
-                        .btn-hide:hover .hide {
-                            display: block;
-                        }
-
-                    }
-                }
-            }
-        }
-    }
-}
 
 // SINGLE PRODUCT PAGE (SHOW)
 
