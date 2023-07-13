@@ -1,5 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
 
+*{
+    user-select: none;
+}
+
 img {
     max-width: 100%;
     
@@ -245,6 +249,7 @@ nav {
     overflow-y: auto;
     
     
+    
 
     //NO RESTAURANT / NEW USER ---------------------------------------------
     .new-user {
@@ -256,6 +261,9 @@ nav {
             border-radius: 20px;
             box-shadow: 0px 10px 30px rgb(49, 49, 49);
             padding: 1rem 0;
+            &::-webkit-scrollbar{
+                display: none;
+              }
             
             .welcome{
                 width: 100%;
@@ -336,6 +344,9 @@ nav {
     .restaurant{
         height: calc(100vh - 80px);
         overflow-y: auto;
+        &::-webkit-scrollbar{
+            display: none;
+          }
         .card {
             display: flex;
             flex-direction: column;
@@ -420,7 +431,7 @@ nav {
                         border-radius: 10px;
                         box-shadow: 0px 0px 10px grey;
                         padding-top: .5rem;
-                        height: 400px;
+                        height: 600px;
                         .restaurant-actions {
                             border-top: 1px solid rgb(151, 151, 151);
                             height: calc(100% - 50px);
@@ -455,12 +466,35 @@ nav {
                                     
                                     padding: 1rem 0;
                                     justify-content: center;
+                                    
                                     .ms_col{
-                                        
+                                        position: relative;
                                         height: 280px;
                                         padding: .5rem .25rem;
                                         padding-top: 0 ;
                                         width: 350px;
+                                        .overlay{
+                                            position: absolute;
+                                            top: 0;
+                                            right: 3px;
+                                            bottom: 0;
+                                            left: 3px;
+                                            background-color: rgba($color: #000000, $alpha: .5);
+                                            z-index: 3;
+                                            border-radius: 10px;
+                                            text-align: center;
+                                            padding-top: 4rem;
+                                            i{
+                                                font-size: 50px;
+                                                
+                                            }
+                                            p{
+                                                font-size: 30px;
+                                                color: #ffff;
+                                                text-decoration: underline;
+                                            }
+
+                                        }
                                         
                                         .ms_card-top{
                                             height: 100px;
@@ -483,6 +517,9 @@ nav {
                                             border-bottom-left-radius:10px ;
                                             border-bottom-right-radius:10px;
                                             
+                                            .card-info{
+                                                height: 110px;
+                                            }
                                             .product-card-title{
                                                 position: absolute;
                                                 padding: .3rem .5rem;
@@ -499,22 +536,25 @@ nav {
                                             .description{
                                                 margin-top: -10px;
                                             }
-                                        }
-                                        .buttons{
-                                            height: 50px;
-                                            display: flex;
-                                            justify-content: space-evenly;
-                                            .button{
-                                                width: 100px;  
-                                                div{
-                                                    margin-top: -5px;
-                                                }
+                                            .buttons{
+                                                height: 50px;
+                                                display: flex;
+                                                justify-content: space-evenly;
+                                                position: relative;
+                                                z-index: 4;
                                                 
-                                                .btn{
-                                                    width: 100%;
-                                                    height: 100%;
-                                                    font-size: 15px;
-                                                  
+                                                .button{
+                                                    width: 100px;  
+                                                    div{
+                                                        margin-top: -5px;
+                                                    }
+                                                    
+                                                    .btn{
+                                                        width: 100%;
+                                                        height: 100%;
+                                                        font-size: 15px;
+                                                      
+                                                    }
                                                 }
                                             }
                                         }

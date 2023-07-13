@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-@include('partials.session-message')
-@include('partials.modal-delete')
+    @include('partials.session-message')
+    @include('partials.modal-delete')
     <img class="background-img" src="{{ asset('img/Background-cover.png') }}" alt="">
     @if (!$restaurant)
-    <div class="wrapper">
-        <div class="container new-user ">
+        <div class="wrapper">
+            <div class="container new-user ">
 
-            <div class="row justify-content-center">
-                @include('partials.session-message')
-                {{-- VISUALIZATION WITHOUT A RESTAURANT (FIRST ACCESS) ---------------------------------------------------------------------------------------------- --}}
+                <div class="row justify-content-center">
+                    @include('partials.session-message')
+                    {{-- VISUALIZATION WITHOUT A RESTAURANT (FIRST ACCESS) ---------------------------------------------------------------------------------------------- --}}
                     <div class="no-restaurants">
                         <div class="welcome">
                             <div class="img-container">
@@ -68,159 +68,178 @@
                         </div>
 
                     </div>
+                </div>
             </div>
         </div>
-    </div>
     @else
-    <div class="wrapper">
-        <div class="container restaurant">
-            {{-- ------------------ VISUALIZATION WITH A RESTAURANT---------------------------------------------------------------------------------------------- --}}
-            <div class="card">
-                <div class="card-img">
-                    @if ($restaurant->image)
-                        <img src="{{ asset('storage/' . $restaurant->image) }}" class="" alt="Restaurant Image">
-                    @else
-                        <img src="{{ asset('img/logo.png') }}" class="" alt="Restaurant Image">
-                    @endif
-                </div>
-
-                <div class="card-body">
-                    <div class="restaurant-detail-card-container">
-                        <div class="restaurant-detail-card ">
-                            <h2 class="d-inline-block me-2">{{ $restaurant->name }}</h2>
-                            <!-- Altrimenti, puoi mostrare un messaggio di caricamento o una stringa predefinita -->
-                            <p><i class="fa-solid fa-location-dot"></i> {{ $restaurant->address }}</p>
-                        </div>
-                    </div>
-
-                    <div class="">
-                        <h2>Dettagli Ristorante</h2>
-                        <h5 class="card-text d-inline-block">P. IVA:</h5>
-                        <span>{{ $restaurant->vat_number }}</span>
-                        <hr>
-                        @if ($restaurant->description)
-                            <h5 class="card-text d-inline-block">Descrizione: </h5>
-                            <p>{{ $restaurant->description }}</p>
-                            <hr>
+        <div class="wrapper">
+            <div class="container restaurant">
+                {{-- ------------------ VISUALIZATION WITH A RESTAURANT---------------------------------------------------------------------------------------------- --}}
+                <div class="card">
+                    <div class="card-img">
+                        @if ($restaurant->image)
+                            <img src="{{ asset('storage/' . $restaurant->image) }}" class="" alt="Restaurant Image">
                         @else
-                            <h5 class="card-text d-inline-block">Descrizione: </h5>
-                            <p>Descrizione non disponibile</p>
-                            <hr>
+                            <img src="{{ asset('img/logo.png') }}" class="" alt="Restaurant Image">
                         @endif
                     </div>
-                    
-                       
-                    
-                    <section class="products">
-                        <h5 class="text-center">Prodotti</h5>
-                        <div class="restaurant-actions  ">
-                            <div class="actions">        
-                                <a href="{{ route('admin.products.create') }}" class="btn ms_button-green">Aggiungi Prodotto</a>
+
+                    <div class="card-body">
+                        <div class="restaurant-detail-card-container">
+                            <div class="restaurant-detail-card ">
+                                <h2 class="d-inline-block me-2">{{ $restaurant->name }}</h2>
+                                <!-- Altrimenti, puoi mostrare un messaggio di caricamento o una stringa predefinita -->
+                                <p><i class="fa-solid fa-location-dot"></i> {{ $restaurant->address }}</p>
                             </div>
-                            <div class="products-showcase">
-                                <div class="container">
-                                    <div class="row">
-                                        {{-- foreach for products cards --}}
-                                        @foreach ($products as $item)
-                                        <div class="ms_col">
-                                            
+                        </div>
 
-                                                <div class="ms_card-top">
-                                                    <a href="{{ route('admin.products.show', $item->id) }}"
-                                                        class="ms_card-img-box {{ $item->visible ? '' : 'sepia' }}"
-                                                        data-visible="{{ $item->visible ? '1' : '0' }}"
-                                                        data-image="{{ asset('storage/' . $item->image) }}">
+                        <div class="">
+                            <h2>Dettagli Ristorante</h2>
+                            <h5 class="card-text d-inline-block">P. IVA:</h5>
+                            <span>{{ $restaurant->vat_number }}</span>
+                            <hr>
+                            @if ($restaurant->description)
+                                <h5 class="card-text d-inline-block">Descrizione: </h5>
+                                <p>{{ $restaurant->description }}</p>
+                                <hr>
+                            @else
+                                <h5 class="card-text d-inline-block">Descrizione: </h5>
+                                <p>Descrizione non disponibile</p>
+                                <hr>
+                            @endif
+                        </div>
 
-                                                        @if ($item->image)
-                                                            <img src="{{ asset('storage/' . $item->image) }}" alt="DeliveBoo">
-                                                        @else
-                                                            <img src="{{ asset('img/logo.png') }}" alt="Deliveboo">
-                                                        @endif
-                                                    </a>
-                                                </div>
 
-                                                <div class="ms_card-body">
-                                                    <div class="product-card-title">
-                                                        <h5 class="card-title text-center">{{ $item->name }}</h5>
+
+                        <section class="products">
+                            <h5 class="text-center">Prodotti</h5>
+                            <div class="restaurant-actions  ">
+                                <div class="actions">
+                                    <a href="{{ route('admin.products.create') }}" class="btn ms_button-green">Aggiungi
+                                        Prodotto</a>
+                                </div>
+                                <div class="products-showcase">
+                                    <div class="container">
+                                        <div class="row gy-3">
+                                            {{-- foreach for products cards --}}
+                                            @foreach ($products as $item)
+                                                <div class="ms_col">
+                                                @if($item->visible === 0)
+                                                    <div class="overlay">
+                                                        <i class="fa-solid fa-eye-slash" style="color: #ffffff;"></i>
+                                                        <p>Prodotto nascosto</p>
                                                     </div>
+                                                @endif
+                                                    
+                                                    <div class="ms_card-top">
+                                                        <a href="{{ route('admin.products.show', $item->id) }}"
+                                                            class="ms_card-img-box {{ $item->visible ? '' : 'sepia' }}"
+                                                            data-visible="{{ $item->visible ? '1' : '0' }}"
+                                                            data-image="{{ asset('storage/' . $item->image) }}">
 
-                                                    <div class="ms_card-details d-flex justify-content-between ">
-
-                                                        @if ($item->category)
-                                                            <p class="card-text">categoria: {{ $item->category->name }}</p>
-                                                        @else
-                                                            <p>Nessuna categoria</p>
-                                                        @endif
-
-                                                        <p class="card-text">prezzo: €{{ $item->price }}</p>
-                                                    </div>
-
-                                                    <div class="description">
-                                                        @if ($item->description)
-                                                        <h6 >descrizione</h6>
-                                                            <p class="card-text">
-                                                                @if (strlen($item->description) > 45)
-                                                                    {{ substr($item->description, 0, 45) }}...
-                                                                @else
-                                                                    {{ $item->description }}
-                                                                @endif
-                                                            </p>
-                                                        @else
-                                                            <p>Nessuna descrizione</p>
-                                                        @endif
-                                                    </div>
-
-                                                    <div class="buttons">
-                                                        <form action="{{ route('admin.product.visible', $item->id) }}" method="POST"
-                                                            class="disp-visible button">
-                                                            @csrf
-                                                            @method('GET')
-                                                            <input type="hidden" name="visible" value="{{ $item->visible ? '0' : '1' }}">
-                                                            @if ($item->visible === 1)
-                                                                <button type="submit" class="btn btn-secondary btn-hide">
-                                                                    <i class="fa-solid fa-eye-slash" style="color: #ffffff;"></i>
-                                                                    <div class="hide">Nascondi</div>
-                                                                </button>
+                                                            @if ($item->image)
+                                                                <img src="{{ asset('storage/' . $item->image) }}"
+                                                                    alt="DeliveBoo">
                                                             @else
-                                                                <button type="submit" class="btn btn-success btn-show">
-                                                                    <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
-                                                                    <div>Mostra</div>
-                                                                </button>
+                                                                <img src="{{ asset('img/logo.png') }}" alt="Deliveboo">
                                                             @endif
-                                                        </form>
-                                                        <div class="button">
-                                                            <a href="{{ route('admin.products.edit', $item->id) }}" class="btn btn-primary">
-                                                                <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
-                                                                <div>Modifica</div>
-                                                            </a>
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="ms_card-body">
+                                                        <div class="card-info">
+
+                                                            <div class="product-card-title">
+                                                                <h5 class="card-title text-center">{{ $item->name }}</h5>
+                                                            </div>
+    
+                                                            <div class="ms_card-details d-flex justify-content-between ">
+    
+                                                                @if ($item->category)
+                                                                    <p class="card-text">categoria: {{ $item->category->name }}
+                                                                    </p>
+                                                                @else
+                                                                    <p>Nessuna categoria</p>
+                                                                @endif
+    
+                                                                <p class="card-text">prezzo: €{{ $item->price }}</p>
+                                                            </div>
+    
+                                                            <div class="description">
+                                                                @if ($item->description)
+                                                                    <h6>descrizione</h6>
+                                                                    <p class="card-text">
+                                                                        @if (strlen($item->description) > 45)
+                                                                            {{ substr($item->description, 0, 45) }}...
+                                                                        @else
+                                                                            {{ $item->description }}
+                                                                        @endif
+                                                                    </p>
+                                                                @else
+                                                                    <p>Nessuna descrizione</p>
+                                                                @endif
+                                                            </div>
                                                         </div>
 
-                                                        <form action="{{ route('admin.products.destroy', $item->id) }}" method="POST" class="button">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-delete"
-                                                                data-product-name="{{ $item->name }}">
-                                                                <i class="fa-solid fa-trash" tyle="color: #ffffff;"></i>
-                                                                <div>Elimina</div>
-                                                            </button>
-                                                        </form>
+                                                        <div class="buttons">
+                                                            <form action="{{ route('admin.product.visible', $item->id) }}"
+                                                                method="POST" class="disp-visible button">
+                                                                @csrf
+                                                                @method('GET')
+                                                                <input type="hidden" name="visible"
+                                                                    value="{{ $item->visible ? '0' : '1' }}">
+                                                                @if ($item->visible === 1)
+                                                                    <button type="submit"
+                                                                        class="btn btn-secondary btn-hide">
+                                                                        <i class="fa-solid fa-eye-slash"
+                                                                            style="color: #ffffff;"></i>
+                                                                        <div class="hide">Nascondi</div>
+                                                                    </button>
+                                                                @else
+                                                                    <button type="submit" class="btn btn-success btn-show">
+                                                                        <i class="fa-solid fa-eye"
+                                                                            style="color: #ffffff;"></i>
+                                                                        <div>Mostra</div>
+                                                                    </button>
+                                                                @endif
+                                                            </form>
+                                                            <div class="button">
+                                                                <a href="{{ route('admin.products.edit', $item->id) }}"
+                                                                    class="btn btn-primary">
+                                                                    <i class="fa-solid fa-pen-to-square"
+                                                                        style="color: #ffffff;"></i>
+                                                                    <div>Modifica</div>
+                                                                </a>
+                                                            </div>
+
+                                                            <form action="{{ route('admin.products.destroy', $item->id) }}"
+                                                                method="POST" class="button">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger btn-delete"
+                                                                    data-product-name="{{ $item->name }}">
+                                                                    <i class="fa-solid fa-trash"
+                                                                        tyle="color: #ffffff;"></i>
+                                                                    <div>Elimina</div>
+                                                                </button>
+                                                            </form>
+
+                                                        </div>
 
                                                     </div>
-
+                                                
                                                 </div>
-                                            
+                                            @endforeach
                                         </div>
-                                    @endforeach
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
+                    </div>
                 </div>
-            </div>
-            @endif
+    @endif
 
 
-        </div>
+    </div>
     </div>
 @endsection
