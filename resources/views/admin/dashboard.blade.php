@@ -9,7 +9,7 @@
             </h1>
             <div class="row justify-content-center">
                 @include('partials.session-message')
-
+{{-- VISUALIZATION WITHOUT A RESTAURANT (FIRST ACCESS) ---------------------------------------------------------------------------------------------- --}}
                 @if (!$restaurant)
                     <div class="no-restaurants">
                         <div class="welcome">
@@ -66,6 +66,8 @@
                        
                     </div>
                 @else
+                
+{{-------------------- VISUALIZATION WITH A RESTAURANT---------------------------------------------------------------------------------------------- --}}
                     <div class="card">
                         <div class="card-img">
                             @if ($restaurant->image)

@@ -234,7 +234,7 @@ nav {
     }
 }
 
-// DASHBOARD 
+// DASHBOARD ----------------------------------------------------------------
 .wrapper {
     position: relative;
     height: calc(100vh - 70px);
@@ -359,12 +359,24 @@ nav {
                     .restaurant-detail-card {
                         position: absolute;
                         padding: 1rem 2rem;
-                        top: -50px;
+                        top: -100px;
                         border-radius: 20px;
                         box-shadow: 0px 10px 15px rgb(166, 166, 166);
                         background-color: white;
                         left: 0;
                         right: 50%;
+                        @media screen and (min-width:200px){
+                            width: 100%;
+                        }
+                        @media screen and (max-width:390px){
+                            top: -150px;
+                        }
+                        @media screen and (min-width:768px){
+                            width: 70%;
+                        }
+                        @media screen and (min-width:1000px){
+                            top: -60px;
+                        }
 
 
                         h2 {
