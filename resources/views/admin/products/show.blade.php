@@ -47,7 +47,7 @@
 
             </div>
             <div class="d-flex justify-content-center">
-                <a href="{{ route('admin.products.index') }}" class="btn btn-primary mt-3">Torna ai prodotti</a>
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-primary mt-3">Torna ai prodotti</a>
             </div>
         </div>
     </div>
