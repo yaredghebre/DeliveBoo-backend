@@ -11,7 +11,16 @@ class DashboardController extends Controller
     public function index()
     {
         $restaurant = Auth::user()->restaurant;
-        $products = $restaurant->products;
-        return view('admin.dashboard', compact('restaurant', 'products'));
+        $orders = [];
+        $products = [];
+        if ($restaurant) {
+            $products = $restaurant->products;
+        }
+        if ($products) {
+            foreach ($products as $product) {
+                $orders[] = $product->orders;
+            }
+        }
+        return view('admin.dashboard', compact('restaurant', 'products', 'orders'));
     }
 }
