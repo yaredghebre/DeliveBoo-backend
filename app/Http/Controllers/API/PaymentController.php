@@ -80,7 +80,7 @@ class PaymentController extends Controller
             if ($order && $order_product) {
                 $orderMessage = 'I dati sono stati salvati';
                 //invio e-mail
-                Mail::to('admin@deliveboo.com')->send(new NewOrderEmail($order));
+                Mail::to($order->customer_email)->send(new NewOrderEmail($order));
             }
         } else {
             $message = 'La transazione è stata rifiutata';
