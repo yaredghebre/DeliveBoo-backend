@@ -16,16 +16,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $products = Auth::user()->restaurant->products;
-        return view('admin.products.index', compact('products'));
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -59,7 +49,7 @@ class ProductController extends Controller
             $product->categories()->attach($request->categories);
         }
 
-        return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato creato con successo");;
+        return redirect()->route('admin.dashboard')->with('message', "{$product->name} è stato creato con successo");;
     }
 
     /**
@@ -118,7 +108,7 @@ class ProductController extends Controller
             }
 
             $product->update($data);
-            return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato modificato con successo");
+            return redirect()->route('admin.dashboard')->with('message', "{$product->name} è stato modificato con successo");
         } else {
             return view('errors.403');
         }
@@ -130,7 +120,7 @@ class ProductController extends Controller
 
             $data = $request->all();
             $product->update($data);
-            return redirect()->route('admin.products.index')->with('message', "{$product->name} è stato modificato con successo");
+            return redirect()->route('admin.dashboard')->with('message', "{$product->name} è stato modificato con successo");
         } else {
             return view('errors.403');
         }
@@ -150,7 +140,7 @@ class ProductController extends Controller
                 Storage::delete($product->image);
             }
             $product->delete();
-            return redirect()->route('admin.products.index')->with('message', "{$product->name} è sato cancellato");
+            return redirect()->route('admin.dashboard')->with('message', "{$product->name} è sato cancellato");
         } else {
             return view('errors.403');
         }
