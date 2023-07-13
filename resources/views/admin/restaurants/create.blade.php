@@ -4,7 +4,7 @@
     @include('partials.session-message')
 
     <img class="background-img" src="{{ asset('img/Background-cover.png') }}" alt="">
-    <div class="container-fluid d-flex py-4  justify-content-center restaurants ">
+    <div class="container-fluid  py-4  restaurants ">
             
         @if ($errors->any())
             <ul class="alert alert-danger w-50 m-auto mt-4 list-unstyled">
@@ -23,6 +23,7 @@
                 <img src="{{asset('img/background2.jpg')}}" alt="">
                 <form action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <h2 class="text-center">Crea il tuo ristorante</h2>
                     <div class="mb-3">
                         <label for="restaurant_name" class="form-label">Nome Attività *</label>
                         <input type="text" minlength="4" maxlength="50" required
