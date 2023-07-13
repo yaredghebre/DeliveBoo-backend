@@ -3,16 +3,24 @@
 @section('content')
     @include('partials.session-message')
 
-
-    <div class="containter vh-100  restaurants">
+    <img class="background-img" src="{{ asset('img/Background-cover.png') }}" alt="">
+    <div class="container-fluid d-flex py-4  justify-content-center restaurants ">
+            
         @if ($errors->any())
             <ul class="alert alert-danger w-50 m-auto mt-4 list-unstyled">
                 <h4 class="text-center">Attenzione</h4>
                 <li class="text-center">Controlla gli errori nei campi</li>
             </ul>
         @endif
-        <div class="row h-100 justify-content-center py-4">
-            <div class="col-6">
+
+        <div class="container">
+            <div class="welcome">
+                <div class="img-container">
+                    <img src="{{asset('img/logo.png')}}" alt="">
+                </div>
+            </div>
+            <div class="background">
+                <img src="{{asset('img/background2.jpg')}}" alt="">
                 <form action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
@@ -25,9 +33,9 @@
                                 {{ $message }}
                             </div>
                         @enderror
-
+    
                     </div>
-
+    
                     <div class="mb-3">
                         <label for="restaurant_address" class="form-label">Indirizzo Attività *</label>
                         <input type="text" minlength="5" maxlength="60"required
@@ -39,7 +47,7 @@
                             </div>
                         @enderror
                     </div>
-
+    
                     <div class="mb-3">
                         <label for="restaurant_vat_number" class="form-label">P.IVA *</label>
                         <input id="iva" type="text" minlength="11" maxlength="11" required
@@ -51,7 +59,7 @@
                             </div>
                         @enderror
                     </div>
-
+    
                     <div class="mb-3">
                         <label class="form-label" for="image-input">
                             Seleziona un immagine di copertina per la tua
@@ -59,8 +67,8 @@
                         </label>
                         <input type="file" class="form-control   @error('image')is-invalid @enderror" id="image-input"
                             name="image" value="{{ old('file') }}">
-                        <div>
-                            <img class="d-none w-25" id="image-preview" src="" alt="">
+                        <div class="img-preview-container">
+                            <img class="d-none " id="image-preview" src="" alt="">
                         </div>
                         @error('image')
                             <div class="invalid-feedback">
@@ -68,7 +76,7 @@
                             </div>
                         @enderror
                     </div>
-
+    
                     <div class="mb-3">
                         <p>Aggiungi una descrizione della tua attività</p>
                         <div class="form-floating">
@@ -80,17 +88,17 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-
+    
                         </div>
-
+    
                     </div>
-
-                    <p>seleziona le categorie che più si addicono alla tua attività *</p>
+    
+                    <p class="text-center">seleziona le categorie che più si addicono alla tua attività *</p>
                     <div class="mb-3 types-checkbox form-tags-container row">
                         <span id="category-error" class="fs-6 d-none text-center mt-3 mb-3 text-danger">
                             Seleziona una categoria
                         </span>
-
+    
                         @foreach ($types as $type)
                             <div class="form-check form-ceck-tag ">
                                 <input
@@ -100,24 +108,25 @@
                                 <label class="form-check-label absolute " for="type-{{ $type->id }}">
                                     {{ $type->name }}
                                 </label>
-
+    
                             </div>
                         @endforeach
-
+    
                         @error('types')
                             <p class="checkbox-error ">seleziona almeno una categoria</p>
                         @enderror
-
+    
                     </div>
-
+    
                     <div class="text-center">
-                        <button id="restaurant-form" type="submit" class="btn btn-success">Salva</button>
+                        <button id="restaurant-form" type="submit" class="btn btn-success">Crea Ristorante</button>
                     </div>
-
+    
                 </form>
             </div>
         </div>
-    @endsection
-    @section('script')
-        @vite(['resources/js/helpers/checkedBoxValidation.js'])
-    @endsection
+    </div>
+@endsection
+@section('script')
+    @vite(['resources/js/helpers/checkedBoxValidation.js'])
+@endsection

@@ -10,7 +10,17 @@ body {
 
 main {
     height: calc(100vh - 76px);
-
+    position: relative;
+    .background-img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        
+        object-fit: cover;
+        
+        z-index: -1;
+    }
+    
 }
 
 //app.blade
@@ -92,6 +102,75 @@ nav {
 
 //CREATE RESTAURANT .BLADE
 .restaurants {
+    .container{
+        
+        border-radius: 20px;
+        background-color: #FFF3DA;
+        box-shadow: 0px 10px 30px rgb(49, 49, 49);
+        padding: 0;
+        overflow: hidden;
+        .background{
+            border: 1px solid black;
+            position: relative;
+            img{
+                position:absolute;
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+                z-index: 1;
+            }
+        }
+        .welcome{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            
+            .img-container{
+                
+                width: 50%;
+                min-width: 150px;
+                margin: 0 auto;
+                height: 120px;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                @media screen and (max-width:500px){
+                    height: 50px;
+                }
+                
+                img{
+                    text-align: center;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+        form{
+            position: relative;
+            z-index: 3;
+            max-width: 726px;
+            margin: 3rem auto;
+            background-color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 10px 30px rgb(49, 49, 49);
+
+            .img-preview-container{
+                height: 150px;
+                border: 1px solid black;
+                overflow: hidden;
+                position: relative;
+                #image-preview{
+                    position: absolute;
+                    object-fit: cover;
+                    height: 150px;
+                }
+            }
+        }
+    }
 
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -109,7 +188,7 @@ nav {
             width: 80px;
             height: 30px;
             padding: 0;
-
+            cursor: pointer;
             margin-right: 5px;
             z-index: 2;
 
@@ -125,6 +204,7 @@ nav {
 
             .form-check-input {
                 background-color: rgba(255, 165, 47, 0.708);
+                cursor: pointer;
             }
 
             .absolute {
@@ -135,7 +215,7 @@ nav {
                 font-weight: bold;
                 font-size: .7rem;
                 z-index: 1;
-
+                cursor: pointer;
             }
 
             .ms_form-check {
@@ -143,6 +223,7 @@ nav {
                 height: 30px;
                 padding: 0;
                 margin: 0;
+                
             }
         }
 
@@ -153,28 +234,98 @@ nav {
     }
 }
 
-// DASHBOARD 
+// DASHBOARD ----------------------------------------------------------------
 .wrapper {
     position: relative;
     height: calc(100vh - 70px);
     font-family: 'Roboto', sans-serif;
     background-size: cover;
     padding: 20px 0;
+    overflow-y: auto;
 
-    .background-img {
-        position: absolute;
-        width: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        object-fit: cover;
-        height: 100%;
-        z-index: -1;
-    }
 
     .container {
-
+        
+        .no-restaurants{
+            background-color: #FFF3DA;
+            border-radius: 20px;
+            box-shadow: 0px 10px 30px rgb(49, 49, 49);
+            padding: 1rem 0;
+            
+            .welcome{
+                width: 100%;
+                margin: 0 auto;
+                text-align: center;
+                
+                .img-container{
+                    
+                    width: 50%;
+                    min-width: 150px;
+                    margin: 0 auto;
+                    height: 120px;
+                    margin-bottom: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    @media screen and (max-width:500px){
+                        height: 50px;
+                    }
+                    
+                    img{
+                        text-align: center;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+            }
+            .hero{
+                
+                overflow: hidden;
+                box-shadow: 0px 10px 20px rgb(114, 114, 114);
+                .ms_row{
+                    border-bottom: 1px solid grey;
+                    display: flex;
+                    height: 200px;
+                    @media screen and (max-width: 768px ){
+                        height: auto;
+                    }
+                    
+                    .text{
+                        
+                        width: 70%;
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: column;
+                        background-color: #ffffff;
+                    }
+                    .img-hero-container{
+                        
+                        width: 30%;
+                        
+                        img{
+                            height: 100%;
+                            width: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                    @media screen and (max-width: 768px ){
+                        flex-direction: column;
+                        
+                        .text,.img-hero-container{
+                            width: 100%;
+                            height: 250px;
+                        }
+                    }
+                    
+                }
+                .central{
+                    @media screen and (max-width: 768px ){
+                        flex-direction: column-reverse;
+                    }
+                }
+            }
+        }
         .card {
             display: flex;
             flex-direction: column;
@@ -208,12 +359,24 @@ nav {
                     .restaurant-detail-card {
                         position: absolute;
                         padding: 1rem 2rem;
-                        top: -50px;
+                        top: -100px;
                         border-radius: 20px;
                         box-shadow: 0px 10px 15px rgb(166, 166, 166);
                         background-color: white;
                         left: 0;
                         right: 50%;
+                        @media screen and (min-width:200px){
+                            width: 100%;
+                        }
+                        @media screen and (max-width:390px){
+                            top: -150px;
+                        }
+                        @media screen and (min-width:768px){
+                            width: 70%;
+                        }
+                        @media screen and (min-width:1000px){
+                            top: -60px;
+                        }
 
 
                         h2 {

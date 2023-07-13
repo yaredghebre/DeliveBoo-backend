@@ -1,27 +1,80 @@
 @extends('layouts.app')
 
 @section('content')
+<img class="background-img" src="{{ asset('img/Background-cover.png') }}" alt="">
     <div class="wrapper">
-        <img class="background-img" src="{{ asset('img/Background-cover.png') }}" alt="">
         <div class="container">
             <h1 class="mb-3 welcome">
                {{-- Benvenuto {{ Auth::user()->name }} --}}
             </h1>
             <div class="row justify-content-center">
                 @include('partials.session-message')
-
+{{-- VISUALIZATION WITHOUT A RESTAURANT (FIRST ACCESS) ---------------------------------------------------------------------------------------------- --}}
                 @if (!$restaurant)
-                    <div class="col ">
-                        <a href="{{ route('admin.restaurants.create') }}" class="btn btn-primary">Crea un ristorante</a>
+                    <div class="no-restaurants">
+                        <div class="welcome">
+                            <div class="img-container">
+                                <img src="{{asset('img/logo.png')}}" alt="">
+                            </div>
+                        </div>
+                        <div class="hero mb-5">
+                            <div class="ms_row">
+                                <div class="text text-center">
+                                    <h4>
+                                        Crea il tuo ristorante
+                                    </h4>
+                                    <p>
+                                        Porta il tuo ristorante sul web e mettiti in contatto con migliaia di potenziali clienti.
+                                    </p>
+                                </div>
+                                <div class="img-hero-container">
+                                    <img src="{{asset('img/web.jpg')}}" alt="">
+                                </div>
+                            </div>
+                            <div class="ms_row central">
+                                
+                                <div class="img-hero-container">
+                                    <img src="{{asset('img/login_bg.jpg')}}" alt="">
+                                </div>
+                                <div class="text text-center">
+                                    <h4>
+                                        Inserisci i tuoi prodotti
+                                    </h4>
+                                    <p>
+                                        Crea nuovi prodotti dal nostro gestonale in modo facile e veloce, i tuoi clienti potranno poi ordinarli dal sito
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="ms_row ">
+                                <div class="text text-center">
+                                    <h4>
+                                        Consegna
+                                    </h4>
+                                    <p>
+                                        Occupati di ricevere l'ordine e cucinarlo. <br> Al resto ci pensiamo noi grazie ai nostri Riders!
+                                    </p>
+                                </div>
+                                <div class="img-hero-container">
+                                    <img src="{{asset('img/Rider.jpeg')}}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h1>Inizia Subito!</h1>
+                            <a href="{{ route('admin.restaurants.create') }}" class="btn btn-success">Crea un ristorante</a>
+                        </div>
+                       
                     </div>
                 @else
+                
+{{-------------------- VISUALIZATION WITH A RESTAURANT---------------------------------------------------------------------------------------------- --}}
                     <div class="card">
                         <div class="card-img">
                             @if ($restaurant->image)
                                 <img src="{{ asset('storage/' . $restaurant->image) }}" class=""
                                     alt="Restaurant Image">
                             @else
-                                <img src="{{ asset('img/logo.png') }}"" class="" alt="Restaurant Image">
+                                <img src="{{ asset('img/logo.png') }}" class="" alt="Restaurant Image">
                             @endif
                         </div>
 
