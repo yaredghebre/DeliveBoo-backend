@@ -11,6 +11,7 @@ class DashboardController extends Controller
     public function index()
     {
         $restaurant = Auth::user()->restaurant;
-        return view('admin.dashboard', compact('restaurant'));
+        $products = $restaurant->products;
+        return view('admin.dashboard', compact('restaurant', 'products'));
     }
 }

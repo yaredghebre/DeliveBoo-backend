@@ -16,16 +16,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $products = Auth::user()->restaurant->products;
-        return view('admin.products.index', compact('products'));
-    }
 
     /**
      * Show the form for creating a new resource.
