@@ -34,7 +34,7 @@ if (messageBanner.length > 0) {
     messageBanner.forEach((msgBanner) => {
         setTimeout(function () {
             msgBanner.style.display = "none";
-        }, 3000);
+        }, 2000);
     });
 }
 
