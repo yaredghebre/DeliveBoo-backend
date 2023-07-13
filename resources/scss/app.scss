@@ -370,3 +370,10 @@ nav {
         padding: 1rem 1rem;
     }
 }
+
+/* SESSIONE-MESSAGE.BLADE */
+
+.ms_popup-message {
+    left:50%;
+    transform: translateX(-50%);
+}
