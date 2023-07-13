@@ -76,7 +76,7 @@
 
         </form>
 
-        <a href="{{ route('admin.products.index') }}" class="btn btn-warning mt-3">Torna ai prodotti</a>
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-warning mt-3">Torna ai prodotti</a>
 
     </div>
 </div>
