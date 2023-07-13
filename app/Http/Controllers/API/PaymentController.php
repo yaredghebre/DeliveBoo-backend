@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PaymentRequest;
+use App\Mail\NewOrderEmail;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
 use Braintree\Gateway;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -31,8 +33,8 @@ class PaymentController extends Controller
         $orderMessage = '';
         $message = '';
         $sucess = false;
-        $data = $request->all();
         $total = 0;
+        $data = $request->all();
 
         $cart = $data['cart'];
         //calcolare il totale dell'ordine
@@ -77,6 +79,8 @@ class PaymentController extends Controller
             }
             if ($order && $order_product) {
                 $orderMessage = 'I dati sono stati salvati';
+                //invio e-mail
+                Mail::to('admin@deliveboo.com')->send(new NewOrderEmail($order));
             }
         } else {
             $message = 'La transazione è stata rifiutata';
