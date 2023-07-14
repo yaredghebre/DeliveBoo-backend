@@ -89,12 +89,15 @@
                             <div class="restaurant-detail-card ">
                                 <h2 class="d-inline-block me-2">{{ $restaurant->name }}</h2>
                                 <!-- Altrimenti, puoi mostrare un messaggio di caricamento o una stringa predefinita -->
-                                <p><i class="fa-solid fa-location-dot"></i> {{ $restaurant->address }}</p>
+                                
                             </div>
                         </div>
 
                         <div class="">
-                            <h2>Dettagli Ristorante</h2>
+                            <h2 class="text-center mb-3">Dettagli Ristorante</h2>
+                            <h5 class="card-text d-inline-block">Via/Piazza:</h5>
+                            <span> {{ $restaurant->address }}</span>
+                            <hr>
                             <h5 class="card-text d-inline-block">P. IVA:</h5>
                             <span>{{ $restaurant->vat_number }}</span>
                             <hr>
