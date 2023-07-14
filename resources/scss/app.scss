@@ -255,12 +255,12 @@ nav {
 
     //NO RESTAURANT / NEW USER ---------------------------------------------
     .new-user {
-        padding: 2rem 0 ;
+        height: calc(100vh - 80px);
         
         
         .no-restaurants{
             background-color: #FFF3DA;
-            border-radius: 20px;
+            
             box-shadow: 0px 10px 30px rgb(49, 49, 49);
             padding: 1rem 0;
             &::-webkit-scrollbar{
@@ -301,7 +301,7 @@ nav {
                 .ms_row{
                     border-bottom: 1px solid grey;
                     display: flex;
-                    height: 200px;
+                    height: 150px;
                     @media screen and (max-width: 768px ){
                         height: auto;
                     }

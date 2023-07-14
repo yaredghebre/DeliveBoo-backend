@@ -8,7 +8,7 @@
         <div class="wrapper">
             <div class="container new-user ">
 
-                <div class="row justify-content-center">
+                <div class="row h-100 justify-content-center">
                     @include('partials.session-message')
                     {{-- VISUALIZATION WITHOUT A RESTAURANT (FIRST ACCESS) ---------------------------------------------------------------------------------------------- --}}
                     <div class="no-restaurants">
