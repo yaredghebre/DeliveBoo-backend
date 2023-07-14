@@ -4,7 +4,7 @@
     <div class="wrapper">
         <img class="background-img" src="{{ asset('img/Background-cover.png') }}" alt="">
         <div class="container ">
-            <div class="ms_show-card">
+            <div class="ms_show-card pb-3">
 
                 <div class="ms_show-card-top">
                     @if ($product->image)
@@ -52,9 +52,9 @@
                     </div>
                 </div>
 
-            </div>
-            <div class="d-flex justify-content-center">
-                <a href="{{ route('admin.dashboard') }}" class="btn btn-primary mt-3">Torna ai prodotti</a>
+                <div class="d-flex justify-content-center">
+                    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary mt-3">Torna ai prodotti</a>
+                </div>
             </div>
         </div>
     </div>
