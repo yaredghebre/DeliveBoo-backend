@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="ms_wrapper">
-        <div class="container mt-5 px-5">
+    <div class="wrapper">
+        <img class="background-img" src="{{ asset('img/Background-cover.png') }}" alt="">
+        <div class="container ">
             <div class="ms_show-card">
 
                 <div class="ms_show-card-top">
@@ -15,26 +16,32 @@
 
                 <div class="ms_show-card-body">
                     <h1 class="card-title text-center">{{ $product->name }}</h1>
+                    <hr>
                     <div class="ms_show-card-details">
-                        @if ($product->category)
-                            <h4 class="card-text">Categoria: </h4>
-                            <ul>
-                                <li>{{ $product->category->name }}</li>
-                            </ul>
-                        @else
-                            <h4 class="card-text">categoria: </h4>
-                            <ul>
-                                <li>Nessuna categoria</li>
-                            </ul>
-                        @endif
-
-                        <h4 class="card-text">Visibile:</h4>
-                        @if ($product->visible)
-                            <p>Si</p>
-                        @else
-                            <p>No</p>
-                        @endif
-
+                        <div class="d-flex ">
+                            @if ($product->category)
+                            <div class="w-50">
+                                <h4 class="card-text d-inline">Categoria: </h4>
+                                <span> {{ $product->category->name }}</span>
+                            </div>
+                                
+                            @else
+                            <div class="w-50">
+                                <h4 class="card-text d-inline">categoria: </h4>
+                                <span> Nessuna categoria</span>
+                            </div> 
+                            @endif
+                            <div class="w-50 text-end">
+                                <h4 class="card-text d-inline ">Visibile:</h4>
+                                @if ($product->visible)
+                                    <span>Si</span>
+                                @else
+                                    <span>No</span>
+                                @endif
+                            </div>
+                        </div>
+                        <hr>
+                        
                         @if ($product->description)
                             <h4 class="card-text">Descrizione: </h4>
                             <p class="card-text">{{ $product->description }}</p>

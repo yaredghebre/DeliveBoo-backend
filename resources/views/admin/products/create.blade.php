@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="ms_wrapper">
-    <div class="container w-50">
+    <div class="container ">
         @include('partials.session-message')
 
         <form class="mt-4" action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">

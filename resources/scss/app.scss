@@ -1,12 +1,12 @@
 @import '~bootstrap/scss/bootstrap';
 
-*{
+* {
     user-select: none;
 }
 
 img {
     max-width: 100%;
-    
+
 }
 
 body {
@@ -17,22 +17,23 @@ main {
     height: calc(100vh - 76px);
     position: relative;
     overflow: auto;
-    
+
     .background-img {
         position: absolute;
         height: 100%;
         width: 100%;
         object-position: center;
         object-fit: cover;
-        
+
         z-index: -1;
     }
-    
+
 }
 
 //app.blade
 nav {
     background-color: #FFC244;
+
     .logo_deliveboo {
         display: flex;
         justify-content: center;
@@ -109,34 +110,39 @@ nav {
 .restaurants {
     overflow: auto;
     height: 100%;
-    &::-webkit-scrollbar{
+
+    &::-webkit-scrollbar {
         display: none;
     }
-    .container{
-        
+
+    .container {
+
         border-radius: 20px;
         background-color: #FFF3DA;
         box-shadow: 0px 10px 30px rgb(49, 49, 49);
         padding: 0;
         overflow: hidden;
-        .background{
-           
+
+        .background {
+
             position: relative;
-            img{
-                position:absolute;
+
+            img {
+                position: absolute;
                 object-fit: cover;
                 height: 100%;
                 width: 100%;
                 z-index: 1;
             }
         }
-        .welcome{
+
+        .welcome {
             width: 100%;
             margin: 0 auto;
             text-align: center;
-            
-            .img-container{
-                
+
+            .img-container {
+
                 width: 50%;
                 min-width: 150px;
                 margin: 0 auto;
@@ -146,18 +152,20 @@ nav {
                 align-items: center;
                 justify-content: center;
                 overflow: hidden;
-                @media screen and (max-width:500px){
+
+                @media screen and (max-width:500px) {
                     height: 50px;
                 }
-                
-                img{
+
+                img {
                     text-align: center;
                     object-fit: cover;
                     object-position: center;
                 }
             }
         }
-        form{
+
+        form {
             position: relative;
             z-index: 3;
             max-width: 726px;
@@ -166,11 +174,12 @@ nav {
             padding: 1rem 2rem;
             overflow: hidden;
 
-            .img-preview-container{
+            .img-preview-container {
                 height: 150px;
                 overflow: hidden;
                 position: relative;
-                #image-preview{
+
+                #image-preview {
                     position: absolute;
                     object-fit: cover;
                     height: 150px;
@@ -230,7 +239,7 @@ nav {
                 height: 30px;
                 padding: 0;
                 margin: 0;
-                
+
             }
         }
 
@@ -249,31 +258,28 @@ nav {
     height: calc(100vh - 80px);
     font-family: 'Roboto', sans-serif;
     overflow-y: auto;
-    
-    
-    
 
-    //NO RESTAURANT / NEW USER ---------------------------------------------
+    //NO RESTAURANT / NEW USER 
     .new-user {
         height: calc(100vh - 80px);
-        
-        
-        .no-restaurants{
+
+        .no-restaurants {
             background-color: #FFF3DA;
-            
+
             box-shadow: 0px 10px 30px rgb(49, 49, 49);
             padding: 1rem 0;
-            &::-webkit-scrollbar{
+
+            &::-webkit-scrollbar {
                 display: none;
             }
-            
-            .welcome{
+
+            .welcome {
                 width: 100%;
                 margin: 0 auto;
                 text-align: center;
-                
-                .img-container{
-                    
+
+                .img-container {
+
                     width: 50%;
                     min-width: 150px;
                     margin: 0 auto;
@@ -283,87 +289,98 @@ nav {
                     align-items: center;
                     justify-content: center;
                     overflow: hidden;
-                    @media screen and (max-width:500px){
+
+                    @media screen and (max-width:500px) {
                         height: 50px;
                     }
-                    
-                    img{
+
+                    img {
                         text-align: center;
                         object-fit: cover;
                         object-position: center;
                     }
                 }
             }
-            .hero{
-                
+
+            .hero {
+
                 overflow: hidden;
                 box-shadow: 0px 10px 20px rgb(114, 114, 114);
-                .ms_row{
+
+                .ms_row {
                     border-bottom: 1px solid grey;
                     display: flex;
                     height: 150px;
-                    @media screen and (max-width: 768px ){
+
+                    @media screen and (max-width: 768px) {
                         height: auto;
                     }
-                    
-                    .text{
-                        
+
+                    .text {
+
                         width: 70%;
                         display: flex;
                         justify-content: center;
                         flex-direction: column;
                         background-color: #ffffff;
                     }
-                    .img-hero-container{
-                        
+
+                    .img-hero-container {
+
                         width: 30%;
-                        
-                        img{
+
+                        img {
                             height: 100%;
                             width: 100%;
                             object-fit: cover;
                         }
                     }
-                    @media screen and (max-width: 768px ){
+
+                    @media screen and (max-width: 768px) {
                         flex-direction: column;
-                        
-                        .text,.img-hero-container{
+
+                        .text,
+                        .img-hero-container {
                             width: 100%;
                             height: 250px;
                         }
                     }
-                    
+
                 }
-                .central{
-                    @media screen and (max-width: 768px ){
+
+                .central {
+                    @media screen and (max-width: 768px) {
                         flex-direction: column-reverse;
                     }
                 }
             }
         }
     }
+
     //with the restaurant--------------------------------------------------------
-    .restaurant{
+    .restaurant {
         height: calc(100vh - 80px);
         overflow-y: auto;
-        &::-webkit-scrollbar{
+
+        &::-webkit-scrollbar {
             display: none;
-          }
+        }
+
         .card {
             display: flex;
             flex-direction: column;
-            
+            border: 1px solid black;
             padding: 0;
             padding-bottom: 2rem;
             box-shadow: 0px 0px 10px grey;
-            
-            
-        
+
+
+
             .card-img {
                 height: 250px;
                 width: 100%;
                 overflow: hidden;
-        
+
                 img {
                     height: 100%;
                     width: 100%;
@@ -371,16 +388,16 @@ nav {
                     object-position: center;
                 }
             }
-        
+
             .card-body {
                 width: 100%;
                 padding: 0 1.5rem;
-        
+
                 .restaurant-detail-card-container {
                     position: relative;
                     min-height: 110px;
                     // z-index: 1;
-        
+
                     .restaurant-detail-card {
                         position: absolute;
                         padding: 1rem 2rem;
@@ -390,32 +407,36 @@ nav {
                         background-color: white;
                         left: 0;
                         right: 50%;
-                        @media screen and (min-width:200px){
+
+                        @media screen and (min-width:200px) {
                             width: 100%;
                         }
-                        @media screen and (max-width:390px){
+
+                        @media screen and (max-width:390px) {
                             top: -150px;
                         }
-                        @media screen and (min-width:768px){
+
+                        @media screen and (min-width:768px) {
                             width: 70%;
                         }
-                        @media screen and (min-width:1000px){
+
+                        @media screen and (min-width:1000px) {
                             top: -60px;
                         }
-        
-        
+
+
                         h2 {
                             margin: 0;
                             font-weight: 700;
                             font-size: 3rem;
                         }
-        
+
                         p {
                             margin: 0;
                             font-size: .8rem;
                             color: #797979;
                         }
-        
+
                         p.description {
                             font-size: .9rem;
                             text-align: left;
@@ -423,191 +444,206 @@ nav {
                         }
                     }
                 }
-    }
-}
 
-//---------------product section-----------------------------------------------------------------
-                
-                    .products{
-                        background-color: #FFC244;
-                        border-radius: 10px;
-                        box-shadow: 0px 0px 10px grey;
-                        padding-top: .5rem;
-                        height: 600px;
-                        .restaurant-actions {
-                            border-top: 1px solid rgb(151, 151, 151);
-                            height: calc(100% - 50px);
-                            background-color: #e4e4e4;
+                //---------------product section-----------------------------------------------------------------
+                .products {
+                    background-color: #FFC244;
+                    border-radius: 10px;
+                    box-shadow: 0px 0px 10px grey;
+                    padding-top: .5rem;
+                    height: 450px;
+
+                    .restaurant-actions {
+                        border-top: 1px solid rgb(151, 151, 151);
+                        height: calc(100% - 50px);
+                        background-color: #e4e4e4;
+                    }
+
+                    .actions {
+                        border-bottom: 1px solid rgb(155, 155, 155);
+                        text-align: center;
+                        padding: .5rem;
+                        box-shadow: 0px 5px 10px rgb(172, 172, 172);
+                        position: relative;
+                        z-index: 2;
+
+                        .btn {
+                            font-size: .7rem;
+                            display: inline-block;
+                            margin: 0 auto;
                         }
-                        .actions{
-                            border-bottom: 1px solid rgb(155, 155, 155);
-                            text-align: center;
-                            padding: .5rem;
-                            box-shadow: 0px 5px 10px rgb(172, 172, 172);
-                            position: relative;
-                            z-index: 2;
-                            .btn{
-                                font-size: .7rem;
-                                display: inline-block;
-                                margin: 0 auto;
-                            }
-                            .ms_button-green {
-                                background-color: #27A182;
-                                color: white;
-                            }
+
+                        .ms_button-green {
+                            background-color: #27A182;
+                            color: white;
                         }
-                        .products-showcase{
-                            background-color: #ffff;
-                            height: calc(100% - 48px);
-                            
-                            .container{
-                                
-                                height: 100%;
-                                overflow: auto;
-                                .row{
-                                    
-                                    padding: 1rem 0;
-                                    justify-content: center;
-                                    
-                                    .ms_col{
+                    }
+
+                    .products-showcase {
+                        background-color: #ffff;
+                        height: calc(100% - 48px);
+
+                        .container {
+
+                            height: 100%;
+                            overflow: auto;
+
+                            .row {
+
+                                padding: 1rem 0;
+                                justify-content: center;
+
+                                .ms_col {
+                                    position: relative;
+                                    height: 280px;
+                                    padding: .5rem .25rem;
+                                    padding-top: 0;
+                                    width: 350px;
+
+                                    .overlay {
+                                        position: absolute;
+                                        top: 0;
+                                        right: 3px;
+                                        bottom: 0;
+                                        left: 3px;
+                                        background-color: rgba($color: #000000, $alpha: .5);
+                                        z-index: 3;
+                                        border-radius: 10px;
+                                        text-align: center;
+                                        padding-top: 4rem;
+
+                                        i {
+                                            font-size: 50px;
+
+                                        }
+
+                                        p {
+                                            font-size: 30px;
+                                            color: #ffff;
+                                            text-decoration: underline;
+                                        }
+
+                                    }
+
+                                    .ms_card-top {
+                                        height: 100px;
+                                        border-top-left-radius: 10px;
+                                        border-top-right-radius: 10px;
+                                        overflow: hidden;
+                                        box-shadow: 0px -3px 20px rgb(155, 155, 155);
+
+                                        img {
+                                            height: 100%;
+                                            width: 100%;
+                                            object-fit: cover;
+                                        }
+                                    }
+
+                                    .ms_card-body {
+                                        height: 180px;
                                         position: relative;
-                                        height: 280px;
-                                        padding: .5rem .25rem;
-                                        padding-top: 0 ;
-                                        width: 350px;
-                                        .overlay{
-                                            position: absolute;
-                                            top: 0;
-                                            right: 3px;
-                                            bottom: 0;
-                                            left: 3px;
-                                            background-color: rgba($color: #000000, $alpha: .5);
-                                            z-index: 3;
-                                            border-radius: 10px;
-                                            text-align: center;
-                                            padding-top: 4rem;
-                                            i{
-                                                font-size: 50px;
-                                                
-                                            }
-                                            p{
-                                                font-size: 30px;
-                                                color: #ffff;
-                                                text-decoration: underline;
-                                            }
+                                        padding: 0 .5rem;
+                                        padding-top: 1rem;
+                                        box-shadow: 0px 5px 15px rgb(109, 109, 109);
+                                        border-bottom-left-radius: 10px;
+                                        border-bottom-right-radius: 10px;
 
+                                        .card-info {
+                                            height: 110px;
                                         }
-                                        
-                                        .ms_card-top{
-                                            height: 100px;
-                                            border-top-left-radius: 10px;
-                                            border-top-right-radius: 10px;
-                                            overflow: hidden;
-                                            box-shadow: 0px -3px 20px rgb(155, 155, 155);
-                                            img{
-                                                height: 100%;
-                                                width: 100%;
-                                                object-fit: cover;
-                                            }
+
+                                        .product-card-title {
+                                            position: absolute;
+                                            padding: .3rem .5rem;
+                                            background-color: #ffff;
+                                            top: -34px;
+                                            border: 1px solid rgb(109, 109, 109);
+                                            box-shadow: 0px 5px 10px rgb(109, 109, 109);
+                                            left: 50%;
+                                            width: 80%;
+                                            transform: translateX(-50%);
+                                            border-radius: 10px;
+                                            z-index: 2;
                                         }
-                                        .ms_card-body{
-                                            height: 180px;
+
+                                        .description {
+                                            margin-top: -10px;
+                                        }
+
+                                        .buttons {
+                                            height: 50px;
+                                            display: flex;
+                                            justify-content: space-evenly;
                                             position: relative;
-                                            padding: 0 .5rem;
-                                            padding-top: 1rem;
-                                            box-shadow: 0px 5px 15px rgb(109, 109, 109);
-                                            border-bottom-left-radius:10px ;
-                                            border-bottom-right-radius:10px;
-                                            
-                                            .card-info{
-                                                height: 110px;
-                                            }
-                                            .product-card-title{
-                                                position: absolute;
-                                                padding: .3rem .5rem;
-                                                background-color: #ffff;
-                                                top: -34px;
-                                                border: 1px solid rgb(109, 109, 109);
-                                                box-shadow: 0px 5px 10px rgb(109, 109, 109);
-                                                left: 50%;
-                                                width: 80%;
-                                                transform: translateX(-50%);
-                                                border-radius: 10px;
-                                                z-index: 2;
-                                            }
-                                            .description{
-                                                margin-top: -10px;
-                                            }
-                                            .buttons{
-                                                height: 50px;
-                                                display: flex;
-                                                justify-content: space-evenly;
-                                                position: relative;
-                                                z-index: 4;
-                                                
-                                                .button{
-                                                    width: 100px;  
-                                                    div{
-                                                        margin-top: -5px;
-                                                    }
-                                                    
-                                                    .btn{
-                                                        width: 100%;
-                                                        height: 100%;
-                                                        font-size: 15px;
-                                                      
-                                                    }
+                                            z-index: 4;
+
+                                            .button {
+                                                width: 100px;
+
+                                                div {
+                                                    margin-top: -5px;
+                                                }
+
+                                                .btn {
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    font-size: 15px;
+
                                                 }
                                             }
                                         }
-                                        
                                     }
+
                                 }
                             }
                         }
                     }
-                
+                }
             }
-
-        }
-    
-
-
-
-// PRODUCT PAGES (INDEX)
-
-// SINGLE PRODUCT PAGE (SHOW)
-
-.ms_show-card {
-    width: 100%;
-    // height: 800px;
-    border-radius: 10px;
-    background-color: white;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-
-    &-top {
-        max-height: 60%;
-        overflow: hidden;
-        
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
     }
-
-    &-body {
-        height: 40%;
-        padding: 1rem 1rem;
+    // Product Show ----------------------------------------------
+    .container{
+        overflow-y: auto;
+        height: 100%;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .ms_show-card {
+            margin: 2rem auto;
+            max-width: 700px;
+            border-radius: 10px;
+            background-color: white;
+            overflow: hidden;
+            box-shadow: 0 10px 10px rgba(80, 80, 80, 0.8);
+        
+            .ms_show-card-top {
+                max-height: 40%;
+                overflow: hidden;
+        
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        
+            .ms_show-card-body {
+                height: 60%;
+                padding: 1rem 1rem;
+            }
+        }
     }
 }
+
+
+
 
 /* SESSIONE-MESSAGE.BLADE */
 
 .ms_popup-message {
     width: 80%;
-    left:50%;
+    left: 50%;
     margin-top: 10%;
     transform: translateX(-50%);
     z-index: 500;
