@@ -1,11 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="ms_wrapper">
-    <div class="container ">
+<div class="wrapper">
+    <img class="background-img" src="{{ asset('img/Background-cover.png') }}" alt="">
+    <div class="ms_container">
         @include('partials.session-message')
 
-        <form class="mt-4" action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+        <form class="mt-4 ms_form" action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Nome prodotto *</label>
@@ -74,12 +75,11 @@
 
             <p class="w-100 text-center">* Questi campi sono obbligatori </p>
 
-            <button class="btn btn-success mt-3" type="submit">Salva prodotto</button>
-
-            <a href="{{ route('admin.dashboard') }}" class="btn btn-primary mt-3">Torna ai prodotti</a>
-
-
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-warning" type="submit">Crea prodotto</button>
+            </div>
         </form>
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-dark mt-3">&larr; Torna ai prodotti</a>
     </div>
 </div>
 @endsection

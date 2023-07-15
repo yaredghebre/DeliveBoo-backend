@@ -634,6 +634,33 @@ nav {
             }
         }
     }
+
+    // PRODUCT EDIT AND CREATE
+
+    .ms_container {
+        width: 50%;
+        margin: 0 auto;
+
+        .ms_form {
+            background-color: #27a182b3;
+            padding: 20px;
+            box-shadow: 0 10px 15px rgba(80, 80, 80, 0.8);
+        }
+
+        .ms_form-edit {
+            background-color: #0d6dfdb0;
+            padding: 20px;
+            box-shadow: 0 10px 15px rgba(80, 80, 80, 0.8);
+        }
+    }
+
+
+    @media screen and (max-width: 900px) {
+
+        .ms_container {
+            width: 80%;
+        }
+    }
 }
 
 
