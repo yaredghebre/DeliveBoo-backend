@@ -499,7 +499,8 @@ nav {
                                     padding: .5rem .25rem;
                                     padding-top: 0;
                                     width: 350px;
-                                    .card-link{
+
+                                    .card-link {
                                         left: 0;
                                         right: 0;
                                         top: 0;
@@ -540,7 +541,7 @@ nav {
                                         overflow: hidden;
                                         box-shadow: 0px -3px 20px rgb(155, 155, 155);
 
-                                        
+
                                         img {
                                             height: 100%;
                                             width: 100%;
@@ -611,13 +612,16 @@ nav {
             }
         }
     }
+
     // Product Show ----------------------------------------------
-    .container{
+    .container {
         overflow-y: auto;
         height: 100%;
+
         &::-webkit-scrollbar {
             display: none;
         }
+
         .ms_show-card {
             margin: 2rem auto;
             max-width: 700px;
@@ -625,18 +629,18 @@ nav {
             background-color: white;
             overflow: hidden;
             box-shadow: 0 10px 10px rgba(80, 80, 80, 0.8);
-        
+
             .ms_show-card-top {
                 max-height: 40%;
                 overflow: hidden;
-        
+
                 img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
                 }
             }
-        
+
             .ms_show-card-body {
                 height: 60%;
                 padding: 1rem 1rem;
@@ -647,6 +651,7 @@ nav {
     // PRODUCT EDIT AND CREATE
 
     .ms_container {
+
         width: 50%;
         margin: 0 auto;
 
@@ -654,6 +659,28 @@ nav {
             background-color: #27a182b3;
             padding: 20px;
             box-shadow: 0 10px 15px rgba(80, 80, 80, 0.8);
+
+            .img-preview-container {
+                height: 150px;
+                overflow: hidden;
+                position: relative;
+                padding: 1rem 0;
+
+                #image-preview,
+                #current-image {
+                    position: absolute;
+                    object-fit: cover;
+                    height: 150px;
+                    width: 100%;
+                }
+            }
+
+            .actions {
+                .btn {
+                    display: block;
+                    height: 40px;
+                }
+            }
         }
 
         .ms_form-edit {
@@ -673,22 +700,24 @@ nav {
 }
 
 //PRODUCT CREATE------------------------------------------------
-div.product-create .container form{
+div.product-create .container form {
     .img-preview-container {
         height: 150px;
         overflow: hidden;
         position: relative;
         padding: 1rem 0;
 
-        #image-preview,#current-image{
+        #image-preview,
+        #current-image {
             position: absolute;
             object-fit: cover;
             height: 150px;
             width: 100%;
         }
     }
-    .actions{
-        .btn{
+
+    .actions {
+        .btn {
             display: block;
             height: 40px;
         }
@@ -711,11 +740,13 @@ div.product-create .container form{
     background-color: #E1F4E5;
     color: rgb(3, 3, 3);
     box-shadow: 0px 10px 20px black;
-    div{
+
+    div {
         flex-grow: 1;
     }
-    img{
-        
+
+    img {
+
         width: 150px;
         height: 100px;
         display: inline-block;

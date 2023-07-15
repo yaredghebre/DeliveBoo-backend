@@ -111,10 +111,15 @@
                     <label for="image-input">Modifica immagine</label>
                     <input class="form-control @error('image')is-invalid @enderror" type="file" name="image"
                         id="image-input" value="{{ old('image') }}">
-                    <div>
-                        <img class="d-none w-25" id="image-preview" src="" alt="">
+                    <div class="img-preview-container">
+                        <img class="d-none" id="image-preview" src="" alt="">
+                        
+                        @if ($product->image)
+                            <img id="current-image" width="150" src="{{ asset('storage/' . $product->image) }}"
+                                alt="{{ $product->name }}">
+                        @endif
                     </div>
-                 @enderror
+                 {{-- @enderror --}}
             </div>
             
             <p class="text-center">* Questi campi sono obbligatori </p>
@@ -129,10 +134,6 @@
                     @enderror
                 </div>
 
-                @if ($product->image)
-                    <img id="current-image" width="150" src="{{ asset('storage/' . $product->image) }}"
-                        alt="{{ $product->name }}">
-                @endif
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Modifica descrizione del prodotto</label>
