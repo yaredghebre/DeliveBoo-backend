@@ -17,8 +17,12 @@ class DashboardController extends Controller
         }
         if ($products) {
             foreach ($products as $product) {
-                $orders[] = $product->orders;
+                if($product->orders->has('id')){
+                    $orders[] = $product->orders;
+                }
+                dd($product->orders->get());
             }
+            
         }
         return view('admin.dashboard', compact('restaurant', 'products', 'orders'));
     }

@@ -239,7 +239,7 @@
                                 </div>
                             </div>
                         </section>
-
+                        @dd($orders)
                         @if (count($orders) > 0)
                             <section class="products">
                                 <h5 class="text-center">Ordini</h5>
@@ -258,6 +258,9 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($orders as $item)
+                                                @dd($item)
+                                                    
+                                            
                                                     <tr>
                                                         <th scope="row">{{ $item['id'] }}</th>
                                                         <td>{{ $item['status'] }}</td>
