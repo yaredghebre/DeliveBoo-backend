@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="ms_wrapper">
-    <div class="container w-50">
+<div class="product-create">
+    <div class="container ">
         @include('partials.session-message')
         @if ($errors->any())
             {{-- <p>attenzione controlla errori</p>   --}}
@@ -46,8 +46,11 @@
             <div class="mb-3">
                 <label for="image-input">Modifica immagine</label>
                 <input class="form-control @error('image')is-invalid @enderror" type="file" name="image" id="image-input" value="{{old('image')}}" >
-                <div>
-                    <img class="d-none w-25" id="image-preview" src="" alt="">
+                <div class="img-preview-container">
+                    <img class="d-none" id="image-preview" src="" alt="">
+                    @if ($product->image)
+                        <img id="current-image"  src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" >
+                    @endif
                 </div>
                 @error('image')
                     <div class="invalid-feedback">
@@ -56,9 +59,6 @@
                 @enderror
             </div>
 
-            @if ($product->image)
-                <img id="current-image" width="150" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" >
-            @endif
 
             <div class="mb-3">
                 <label for="description" class="form-label">Modifica descrizione del prodotto</label>
@@ -70,13 +70,14 @@
                  @enderror
             </div>
             
-            <p class="w-100 text-center">* Questi campi sono obbligatori </p>
-            
-            <button class="btn btn-primary" type="submit">Salva prodotto modificato</button>
+            <p class="text-center">* Questi campi sono obbligatori </p>
+            <div class="actions d-flex justify-content-center">
+                <button class="btn btn-primary me-2" type="submit">Salva prodotto</button>
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-warning ">Torna ai prodotti</a>
+            </div>
 
         </form>
 
-        <a href="{{ route('admin.dashboard') }}" class="btn btn-warning mt-3">Torna ai prodotti</a>
 
     </div>
 </div>

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="ms_wrapper">
-    <div class="container ">
+<div class="product-create">
+    <div class="container">
         @include('partials.session-message')
 
         <form class="mt-4" action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
@@ -51,8 +51,8 @@
                 <label for="image-input">Inserisci immagine</label>
                 <input class="form-control @error('image')is-invalid @enderror" type="file" name="image"
                     id="image-input" value="{{ old('file') }}">
-                <div>
-                    <img class="d-none w-25" id="image-preview" src="" alt="">
+                <div class="img-preview-container">
+                    <img class="d-none " id="image-preview" src="" alt="">
                 </div>
                 @error('image')
                     <div class="invalid-feedback">
@@ -72,11 +72,12 @@
                 @enderror
             </div>
 
-            <p class="w-100 text-center">* Questi campi sono obbligatori </p>
-
-            <button class="btn btn-success mt-3" type="submit">Salva prodotto</button>
-
-            <a href="{{ route('admin.dashboard') }}" class="btn btn-primary mt-3">Torna ai prodotti</a>
+            <p class="text-center">* Questi campi sono obbligatori </p>
+            
+            <div class="d-flex justify-content-center align-items-center actions">
+                <button class="btn btn-success me-2 " type="submit">Salva prodotto</button>
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-primary ">Torna ai prodotti</a>
+            </div>
 
 
         </form>
