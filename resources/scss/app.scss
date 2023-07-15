@@ -655,6 +655,7 @@ nav {
         width: 50%;
         margin: 0 auto;
 
+
         .ms_form {
             background-color: #27a182b3;
             padding: 20px;
@@ -683,7 +684,7 @@ nav {
             }
         }
 
-        .ms_form-edit {
+        .edit {
             background-color: #0d6dfdb0;
             padding: 20px;
             box-shadow: 0 10px 15px rgba(80, 80, 80, 0.8);
@@ -700,29 +701,29 @@ nav {
 }
 
 //PRODUCT CREATE------------------------------------------------
-div.product-create .container form {
-    .img-preview-container {
-        height: 150px;
-        overflow: hidden;
-        position: relative;
-        padding: 1rem 0;
+// div.product-create .container form {
+//     .img-preview-container {
+//         height: 150px;
+//         overflow: hidden;
+//         position: relative;
+//         padding: 1rem 0;
 
-        #image-preview,
-        #current-image {
-            position: absolute;
-            object-fit: cover;
-            height: 150px;
-            width: 100%;
-        }
-    }
+//         #image-preview,
+//         #current-image {
+//             position: absolute;
+//             object-fit: cover;
+//             height: 150px;
+//             width: 100%;
+//         }
+//     }
 
-    .actions {
-        .btn {
-            display: block;
-            height: 40px;
-        }
-    }
-}
+//     .actions {
+//         .btn {
+//             display: block;
+//             height: 40px;
+//         }
+//     }
+// }
 
 
 
