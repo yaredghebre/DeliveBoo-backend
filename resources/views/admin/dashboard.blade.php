@@ -127,6 +127,7 @@
                                             {{-- foreach for products cards --}}
                                             @foreach ($products as $item)
                                                 <div class="ms_col">
+                                                    <a class="card-link" href="{{ route('admin.products.show', $item->id) }}"></a>
                                                 @if($item->visible === 0)
                                                     <div class="overlay">
                                                         <i class="fa-solid fa-eye-slash" style="color: #ffffff;"></i>
@@ -135,10 +136,7 @@
                                                 @endif
                                                     
                                                     <div class="ms_card-top">
-                                                        <a href="{{ route('admin.products.show', $item->id) }}"
-                                                            class="ms_card-img-box {{ $item->visible ? '' : 'sepia' }}"
-                                                            data-visible="{{ $item->visible ? '1' : '0' }}"
-                                                            data-image="{{ asset('storage/' . $item->image) }}">
+                                                        
 
                                                             @if ($item->image)
                                                                 <img src="{{ asset('storage/' . $item->image) }}"
@@ -146,7 +144,7 @@
                                                             @else
                                                                 <img src="{{ asset('img/logo.png') }}" alt="Deliveboo">
                                                             @endif
-                                                        </a>
+                                                        
                                                     </div>
 
                                                     <div class="ms_card-body">

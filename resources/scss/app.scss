@@ -499,6 +499,14 @@ nav {
                                     padding: .5rem .25rem;
                                     padding-top: 0;
                                     width: 350px;
+                                    .card-link{
+                                        left: 0;
+                                        right: 0;
+                                        top: 0;
+                                        bottom: 60px;
+                                        position: absolute;
+                                        z-index: 4;
+                                    }
 
                                     .overlay {
                                         position: absolute;
@@ -532,6 +540,7 @@ nav {
                                         overflow: hidden;
                                         box-shadow: 0px -3px 20px rgb(155, 155, 155);
 
+                                        
                                         img {
                                             height: 100%;
                                             width: 100%;
@@ -642,13 +651,23 @@ nav {
 /* SESSIONE-MESSAGE.BLADE */
 
 .ms_popup-message {
-    width: 80%;
+    width: 60%;
+    display: flex;
     left: 50%;
-    margin-top: 10%;
+    margin-top: 3%;
     transform: translateX(-50%);
     z-index: 500;
     position: relative;
     background-color: #E1F4E5;
     color: rgb(3, 3, 3);
     box-shadow: 0px 10px 20px black;
+    div{
+        flex-grow: 1;
+    }
+    img{
+        border: 1px solid black;
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+    }
 }
