@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
+<img class="background-img" src="{{ asset('img/Background-cover.png') }}" alt="">
 <div class="wrapper">
-    <img class="background-img" src="{{ asset('img/Background-cover.png') }}" alt="">
     <div class="ms_container">
         @include('partials.session-message')
 

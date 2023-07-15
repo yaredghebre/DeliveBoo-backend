@@ -255,8 +255,7 @@ nav {
 
 
 .wrapper {
-    position: relative;
-    height: calc(100vh - 80px);
+    position: relative;   
     font-family: 'Roboto', sans-serif;
     overflow-y: auto;
 
@@ -611,8 +610,8 @@ nav {
                 }
             }
         }
-    }
-
+    }  
+}
     // Product Show ----------------------------------------------
     .container {
         overflow-y: auto;
@@ -647,19 +646,26 @@ nav {
             }
         }
     }
-
-    // PRODUCT EDIT AND CREATE
-
+// PRODUCT EDIT AND CREATE
+.wrapper {
+    position: relative;
+    height: calc(100vh - 80px);
+    font-family: 'Roboto', sans-serif;
+    overflow-y: auto;
     .ms_container {
 
         width: 50%;
         margin: 0 auto;
+        @media screen and (max-width: 900px) {
+            width: 100%;
+        }
 
 
         .ms_form {
             background-color: #27a182b3;
             padding: 20px;
             box-shadow: 0 10px 15px rgba(80, 80, 80, 0.8);
+            
 
             .img-preview-container {
                 height: 150px;
@@ -690,15 +696,10 @@ nav {
             box-shadow: 0 10px 15px rgba(80, 80, 80, 0.8);
         }
     }
-
-
-    @media screen and (max-width: 900px) {
-
-        .ms_container {
-            width: 80%;
-        }
-    }
 }
+
+
+    
 
 //PRODUCT CREATE------------------------------------------------
 // div.product-create .container form {
