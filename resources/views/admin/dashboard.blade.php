@@ -89,7 +89,7 @@
                             <div class="restaurant-detail-card ">
                                 <h2 class="d-inline-block me-2">{{ $restaurant->name }}</h2>
                                 <!-- Altrimenti, puoi mostrare un messaggio di caricamento o una stringa predefinita -->
-                                
+
                             </div>
                         </div>
 
@@ -127,24 +127,25 @@
                                             {{-- foreach for products cards --}}
                                             @foreach ($products as $item)
                                                 <div class="ms_col">
-                                                    <a class="card-link" href="{{ route('admin.products.show', $item->id) }}"></a>
-                                                @if($item->visible === 0)
-                                                    <div class="overlay">
-                                                        <i class="fa-solid fa-eye-slash" style="color: #ffffff;"></i>
-                                                        <p>Prodotto nascosto</p>
-                                                    </div>
-                                                @endif
-                                                    
-                                                    <div class="ms_card-top">
-                                                        
+                                                    <a class="card-link"
+                                                        href="{{ route('admin.products.show', $item->id) }}"></a>
+                                                    @if ($item->visible === 0)
+                                                        <div class="overlay">
+                                                            <i class="fa-solid fa-eye-slash" style="color: #ffffff;"></i>
+                                                            <p>Prodotto nascosto</p>
+                                                        </div>
+                                                    @endif
 
-                                                            @if ($item->image)
-                                                                <img src="{{ asset('storage/' . $item->image) }}"
-                                                                    alt="DeliveBoo">
-                                                            @else
-                                                                <img src="{{ asset('img/logo.png') }}" alt="Deliveboo">
-                                                            @endif
-                                                        
+                                                    <div class="ms_card-top">
+
+
+                                                        @if ($item->image)
+                                                            <img src="{{ asset('storage/' . $item->image) }}"
+                                                                alt="DeliveBoo">
+                                                        @else
+                                                            <img src="{{ asset('img/logo.png') }}" alt="Deliveboo">
+                                                        @endif
+
                                                     </div>
 
                                                     <div class="ms_card-body">
@@ -153,19 +154,20 @@
                                                             <div class="product-card-title">
                                                                 <h5 class="card-title text-center">{{ $item->name }}</h5>
                                                             </div>
-    
+
                                                             <div class="ms_card-details d-flex justify-content-between ">
-    
+
                                                                 @if ($item->category)
-                                                                    <p class="card-text">categoria: {{ $item->category->name }}
+                                                                    <p class="card-text">categoria:
+                                                                        {{ $item->category->name }}
                                                                     </p>
                                                                 @else
                                                                     <p>Nessuna categoria</p>
                                                                 @endif
-    
+
                                                                 <p class="card-text">prezzo: €{{ $item->price }}</p>
                                                             </div>
-    
+
                                                             <div class="description">
                                                                 @if ($item->description)
                                                                     <h6>descrizione</h6>
@@ -213,7 +215,8 @@
                                                                 </a>
                                                             </div>
 
-                                                            <form action="{{ route('admin.products.destroy', $item->id) }}"
+                                                            <form
+                                                                action="{{ route('admin.products.destroy', $item->id) }}"
                                                                 method="POST" class="button">
                                                                 @csrf
                                                                 @method('DELETE')
@@ -228,7 +231,7 @@
                                                         </div>
 
                                                     </div>
-                                                
+
                                                 </div>
                                             @endforeach
                                         </div>
@@ -236,11 +239,43 @@
                                 </div>
                             </div>
                         </section>
+
+                        @if (count($orders) > 0)
+                            <section class="products">
+                                <h5 class="text-center">Ordini</h5>
+                                <div class="products-showcase">
+                                    <div class="container">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Stato pagamento</th>
+                                                    <th scope="col">Nome Cognome cliente</th>
+                                                    <th scope="col">Email cliente</th>
+                                                    <th scope="col">Data</th>
+                                                    <th scope="col">Totale</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($orders as $item)
+                                                    <tr>
+                                                        <th scope="row">{{ $item['id'] }}</th>
+                                                        <td>{{ $item['status'] }}</td>
+                                                        <td>{{ $item['customer_name_surname'] }}</td>
+                                                        <td>{{ $item['customer_email'] }}</td>
+                                                        <td>{{ $item['date_time'] }}</td>
+                                                        <td>{{ $item['total'] }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </section>
+                        @endif
                     </div>
                 </div>
+            </div>
+        </div>
     @endif
-
-
-    </div>
-    </div>
 @endsection
