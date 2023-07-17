@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $restaurant = Auth::user()->restaurant->with('categories');
+        $restaurant = Auth::user()->restaurant;
         $orders = [];
         $products = [];
         if ($restaurant) {
