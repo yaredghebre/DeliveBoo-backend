@@ -57,7 +57,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.dashboard') }}">{{ __('Home') }}</a>
+                            <a class="nav-link" href="http://localhost:5174/">Torna all' App</a>
                         </li>
                     </ul>
 
