@@ -22,7 +22,7 @@ class RestaurantsTableSeeder extends Seeder
             $new_restaurant=new Restaurant();
             $new_restaurant->name=$restaurant;
             $new_restaurant->address='via roma';
-            $new_restaurant->image='https://th.bing.com/th/id/OIP.tKUOt_OKQoDbSrb39CFbTwHaHa?pid=ImgDet&rs=1';
+            $new_restaurant->image='https://png.pngtree.com/background/20230401/original/pngtree-beautiful-small-cramped-cafe-restaurant-picture-image_2236108.jpg';
             $new_restaurant->vat_number=$number++;
             $new_restaurant->save();
 

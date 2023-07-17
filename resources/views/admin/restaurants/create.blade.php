@@ -13,7 +13,7 @@
             </ul>
         @endif
 
-        <div class="container">
+        <div class="container" style="overflow: auto">
             <div class="welcome">
                 <div class="img-container">
                     <img src="{{asset('img/logo.png')}}" alt="">
