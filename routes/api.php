@@ -23,10 +23,6 @@ Route::get('restaurant', [RestaurantController::class, 'getRestaurant']);
 Route::get('restaurants/products', [RestaurantController::class, 'getProducts']);
 Route::get('types', [TypesController::class, 'index']);
 
-// Route for order
-Route::post('order', [OrderController::class, 'index']);
-
-
 //Route for payment
 Route::get('generate/token', [PaymentController::class, 'generateToken']);
 Route::post('make/payment', [PaymentController::class, 'makePayment']);
