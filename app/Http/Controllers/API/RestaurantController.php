@@ -41,7 +41,7 @@ class RestaurantController extends Controller
             $success = true;
         }
         if ($request->random === 'true') {
-            $query = Restaurant::inRandomOrder()->limit(6);
+            $query = Restaurant::with('types')->inRandomOrder()->limit(6);
             $success = true;
         }
         $restaurants = $query->get();
