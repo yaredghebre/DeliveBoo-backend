@@ -11,14 +11,17 @@ class DashboardController extends Controller
     public function index()
     {
         $restaurant = Auth::user()->restaurant;
+        $orders = [];
         $products = [];
         if ($restaurant) {
             $products = $restaurant->products;
         }
+        if ($restaurant) {
+            $orders = Order::whereHas('products', function ($q) use ($restaurant) {
+                $q->where('restaurant_id', $restaurant->id);
+            })->get();
+        }
 
-        $orders = Order::whereHas('products', function ($q) use ($restaurant) {
-            $q->where('restaurant_id', $restaurant->id);
-        })->get();
 
         return view('admin.dashboard', compact('restaurant', 'products', 'orders'));
     }

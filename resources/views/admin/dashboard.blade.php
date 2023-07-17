@@ -240,7 +240,7 @@
                             </div>
                         </section>
                         @if (count($orders) > 0)
-                            <section class="products">
+                            <section class="products mt-4">
                                 <h5 class="text-center">Ordini</h5>
                                 <div class="products-showcase">
                                     <div class="container">
@@ -259,10 +259,10 @@
                                                 @foreach ($orders as $item)
                                                     <tr>
                                                         <th scope="row">{{ $item['id'] }}</th>
-                                                        <td>{{ $item['status'] }}</td>
+                                                        <td>{{ $item['status'] === 1 ? 'Pagato' : 'Non Pagato' }}</td>
                                                         <td>{{ $item['customer_name_surname'] }}</td>
                                                         <td>{{ $item['customer_email'] }}</td>
-                                                        <td>{{ $item['date_time'] }}</td>
+                                                        <td>{{ date('d-m-Y, h:m', strtotime($item['date_time'])) }}</td>
                                                         <td>{{ $item['total'] }}</td>
                                                     </tr>
                                                 @endforeach
