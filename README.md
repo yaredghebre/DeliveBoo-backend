@@ -1,1 +1,1 @@
-# <img src="public/image/logo.png" height="40"/> Deliveboo
+# <img src="public/img/logo.png" height="40"/> Deliveboo
